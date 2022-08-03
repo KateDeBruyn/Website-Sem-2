@@ -1,0 +1,448 @@
+
+#logo {
+    color: white;
+    font-size: 30px;
+    line-height: 80px;
+    margin: 30px 30px 30px;
+    line-height: 80px;
+  }
+  
+  nav {
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(5px);
+    height: 80px;
+    width: 100%;
+    color: white;
+  }
+  
+  nav ul {
+    float: right;
+    margin-right: 30px;
+  }
+  
+  nav ul li {
+    display: inline-block;
+    margin: 15px 15px 30px;
+  }
+  
+  nav ul li a {
+    margin-right: 30px;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .menu-bars {
+    font-size: 15px;
+    color: azure;
+    float: right;
+    margin-right: 30px;
+    line-height: 80px;
+    display: none;
+  }
+  
+  #check {
+    display: none;
+  }
+  
+  @media (max-width: 1000px) {
+    .menu-bars {
+      display: block;
+    }
+  
+    nav ul {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      height: 100vh;
+      text-align: center;
+      top: 60px;
+      left: -120%;
+      transition: all 1s;
+    }
+  
+    nav ul li {
+      display: block;
+      padding: 30px 0;
+    }
+  
+    nav ul li a {
+      font-size: 25px;
+      color: white;
+    }
+  
+    #check:checked ~ ul {
+      left: 0;
+    }
+  }
+  
+  #nav-button:hover{
+    color: azure;
+    text-decoration: underline;
+    text-underline-offset: 20%;
+  }
+  
+  #nav-button-index{
+    color: black;
+    background: beige;
+    width: 100px;
+    padding: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  #nav-button-blog{
+    color: black;
+    background: beige;
+    width: 100px;
+    padding: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  #nav-button-projects{
+    color: black;
+    background: beige;
+    width: 100px;
+    padding: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  #nav-button-styleg{
+    color: black;
+    background: beige;
+    width: 100px;
+    padding: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  #nav-button-contact{
+    color: black;
+    background: beige;
+    width: 100px;
+    padding: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  footer {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    height: 80px;
+    width: 100%;
+    padding: 20px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  footer h4{
+    color: rgb(78, 78, 78);
+    font-size: 15px;
+    text-align: center;
+  }
+  
+  .heading-one{
+    color: white;
+    font-size: 35px;
+    margin: 90px 200px 20px;
+    padding: 20px;
+  }
+  
+  .heading-two{
+    color: white;
+    font-size: 25px;
+    margin: 30px 200px 20px;
+    padding: 20px;
+  }
+  
+  .heading-three{
+    color: white;
+    font-size: 21px;
+    margin: 0px 220px;
+    text-decoration: underline;
+  }
+  
+  .heading-four{
+    color: white;
+    font-size: 21px;
+    margin: 15px 220px 0px;
+  }
+  
+  @media (max-width: 1000px){
+    .heading-one{
+      color: white;
+      font-size: 30px;
+      margin: 90px 10px 0px;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .heading-two{
+      color: white;
+      font-size: 25px;
+      margin: 0px 10px 0px;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .heading-three{
+      color: white;
+      font-size: 20px;
+      margin: 0px 10px 0px;
+      text-decoration: underline;
+      text-align: center;
+    }
+    
+    .heading-four{
+      color: white;
+      font-size: 20px;
+      margin: 15px 10px 0px;
+      text-align: center;
+    }
+  }
+  
+  .hyperlink{
+    color: skyblue;
+  }
+  
+  .img-responsive{
+    width: 100%;
+    height: auto;
+  }
+  
+  .video-responsive{
+    width: 100%;
+    height: auto;
+  }
+  
+  #totop-button{
+    width: 150px;
+    margin: 0 45% 10px;
+    padding: 15px;
+    background: powderblue;
+    color: black;
+    border: 0;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+  }
+  
+  #totop-button:hover{
+    color: azure;
+    text-decoration: underline;
+    text-underline-offset: 20%;
+  }
+  
+  /*INDEX PAGE STYLING SECTION*/
+  .index-container{
+    max-width: auto;
+    /*margin is where the grids are shifting from*/
+    margin: 80px 300px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 20px;
+  
+    animation: backInLeft;
+    animation-duration: 1s;
+  }
+  
+  @media (max-width: 1250px){
+    .index-container{
+      max-width: auto;
+      margin: 80px auto;
+      padding: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      row-gap: 20px;
+    }
+  }
+  
+  @media (max-width: 1000px){
+    .index-container{
+      max-width: auto;
+      margin: 80px auto;
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+      row-gap: 20px;
+    }
+  }
+  
+  .index-item{
+    
+    background: black;
+    color: azure;
+    font-size: 20px;
+    padding: 30px;
+    border: skyblue 1px solid;
+  }
+  
+  .anchor{
+    color: rgb(122, 255, 255);
+    text-decoration: none;
+  }
+  
+  .prompt-container{
+    margin: 80px 330px;
+    height: 50vh;
+    width: 50%;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 50px;
+  }
+  
+  #prompt-a, #prompt-b{
+    color: rgb(122, 255, 255);
+    text-align: center;
+  }
+  
+  #generator-button{
+    margin: 80px 45%;
+    background: black;
+    color: azure;
+    border-radius: 5px;
+    border: 1px solid azure;
+    padding: 15px;
+    transition: ease-in-out 0.2s;
+  }
+  
+  #generator-button:hover{
+    background: azure;
+    color: black;
+    border: 1px solid black;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 1000px){
+    .prompt-container{
+      margin: auto;
+      height: 50vh;
+      width: 50%;
+      border: 2px solid white;
+      border-radius: 5px;
+      padding: 50px;
+    }
+  
+    #generator-button{
+      margin: 80px 30%;
+      background: black;
+      color: azure;
+      border-radius: 5px;
+      border: 1px solid azure;
+      padding: 15px;
+      transition: ease-in-out 0.2s;
+    }
+  }
+  
+  
+  /*BLOGS PAGE STYLING SECTION*/
+  
+  .container {
+    max-width: 960px;
+    margin: 100px auto;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 20px;
+  }
+  
+  .blog-section {
+    background: black;
+    color: azure;
+    font-size: 20px;
+    padding: 20px;
+    border: skyblue 1px solid;
+  }
+  
+  .blog-section:hover {
+    background: black;
+    color: azure;
+    font-size: 20px;
+    padding: 20px;
+    border: skyblue 1px solid;
+    display: inline-block;
+    animation: pulse; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 1s; /* don't forget to set a duration! */
+  }
+  
+  .continue{
+    color: gray;
+  }
+  
+  .continue:active{
+    color: gray;
+    animation: animate__backOutUp;
+    animation-duration: 1s;
+  }
+  
+  .blog-figure{
+    margin: 0px 30% 10px;
+  }
+  
+  @media (max-width: 800px){
+    .container {
+      max-width: auto;
+      margin: 80px auto;
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      row-gap: 20px;
+    }
+  }
+  
+  /*INDIVIDUAL BLOG PAGES AND THEIR ELEMENTS*/
+  
+  .blog-paragraph{
+    color: rgb(244, 241, 231);
+    margin: 10px 200px;
+    padding: 20px;
+    font-size: 21px;
+  }
+  
+  .blog-paragraph-new{
+    color: rgb(244, 241, 231);
+    margin: 10px 200px;
+    padding: 20px;
+    font-size: 21px;
+    text-decoration: underline;
+  }
+  
+  @media (max-width: 1000px){
+    .blog-paragraph{
+      color: rgb(244, 241, 231);
+      margin: 10px 10px;
+      padding: 20px;
+      font-size: 21px;
+    }
+    
+    .blog-paragraph-new{
+      color: rgb(244, 241, 231);
+      margin: 10px 10px;
+      padding: 20px;
+      font-size: 21px;
+      text-decoration: underline;
+    }
+  }
