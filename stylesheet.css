@@ -149,6 +149,12 @@
     padding: 20px;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
+
+  footer h3{
+    color: rgb(78, 78, 78);
+    font-size: 15px;
+    text-align: center;
+  }
   
   footer h4{
     color: rgb(78, 78, 78);
@@ -248,89 +254,10 @@
     text-underline-offset: 20%;
   }
   
-  /*INDEX PAGE STYLING SECTION*/
-  .index-container{
-    max-width: auto;
-    /*margin is where the grids are shifting from*/
-    margin: 80px 300px;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    column-gap: 20px;
-    row-gap: 20px;
-  
-    animation: backInLeft;
-    animation-duration: 1s;
-  }
-  
-  @media (max-width: 1250px){
-    .index-container{
-      max-width: auto;
-      margin: 80px auto;
-      padding: 10px;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-      row-gap: 20px;
-    }
-  }
-  
-  @media (max-width: 1000px){
-    .index-container{
-      max-width: auto;
-      margin: 80px auto;
-      padding: 30px;
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: 1fr 1fr;
-      row-gap: 20px;
-    }
-  }
-  
-  .index-item{
-    
-    background: black;
-    color: azure;
-    font-size: 20px;
-    padding: 30px;
-    border: skyblue 1px solid;
-  }
   
   .anchor{
     color: rgb(122, 255, 255);
     text-decoration: none;
-  }
-  
-  .prompt-container{
-    margin: 80px 330px;
-    height: 50vh;
-    width: 50%;
-    border: 2px solid white;
-    border-radius: 5px;
-    padding: 50px;
-  }
-  
-  #prompt-a, #prompt-b{
-    color: rgb(122, 255, 255);
-    text-align: center;
-  }
-  
-  #generator-button{
-    margin: 80px 45%;
-    background: black;
-    color: azure;
-    border-radius: 5px;
-    border: 1px solid azure;
-    padding: 15px;
-    transition: ease-in-out 0.2s;
-  }
-  
-  #generator-button:hover{
-    background: azure;
-    color: black;
-    border: 1px solid black;
-    cursor: pointer;
   }
   
   @media (max-width: 1000px){
