@@ -1,0 +1,100 @@
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: black;
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+
+  /*BLOGS PAGE STYLING SECTION*/
+  
+  .container {
+    max-width: 960px;
+    margin: 100px auto;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 20px;
+  }
+  
+  .blog-section {
+    background: black;
+    color: azure;
+    font-size: 20px;
+    padding: 20px;
+    border: skyblue 1px solid;
+  }
+  
+  .blog-section:hover {
+    background: black;
+    color: azure;
+    font-size: 20px;
+    padding: 20px;
+    border: skyblue 1px solid;
+    display: inline-block;
+    animation: pulse; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 1s; /* don't forget to set a duration! */
+  }
+  
+  .continue{
+    color: gray;
+  }
+  
+  .continue:active{
+    color: gray;
+    animation: animate__backOutUp;
+    animation-duration: 1s;
+  }
+  
+  .blog-figure{
+    margin: 0px 30% 10px;
+  }
+  
+  @media (max-width: 800px){
+    .container {
+      max-width: auto;
+      margin: 80px auto;
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      row-gap: 20px;
+    }
+  }
+  
+  /*INDIVIDUAL BLOG PAGES AND THEIR ELEMENTS*/
+  
+  .blog-paragraph{
+    color: rgb(244, 241, 231);
+    margin: 10px 200px;
+    padding: 20px;
+    font-size: 21px;
+  }
+  
+  .blog-paragraph-new{
+    color: rgb(244, 241, 231);
+    margin: 10px 200px;
+    padding: 20px;
+    font-size: 21px;
+    text-decoration: underline;
+  }
+  
+  @media (max-width: 1000px){
+    .blog-paragraph{
+      color: rgb(244, 241, 231);
+      margin: 10px 10px;
+      padding: 20px;
+      font-size: 21px;
+    }
+    
+    .blog-paragraph-new{
+      color: rgb(244, 241, 231);
+      margin: 10px 10px;
+      padding: 20px;
+      font-size: 21px;
+      text-decoration: underline;
+    }
+  }
