@@ -8,7 +8,7 @@
   }
   
   nav {
-    background: rgba(29, 26, 30, 0.6);
+    background: rgba(29, 26, 30, 0.6); /*rgb(145, 70, 255)*/
     position: fixed;
     top: 0;
     left: 0;
@@ -108,7 +108,7 @@
     cursor: pointer;
   }
   
-  #nav-button-projects{
+  #nav-button-data{
     color: black;
     background: rgb(253, 249, 223);
     width: 100px;
@@ -150,44 +150,57 @@
     font-size: 15px;
     text-align: center;
   }
+
+  h1{
+    color: rgb(169, 112, 255)
+  }
   
   .heading-one{
-    color: rgb(253, 249, 223);
+    color: rgb(169, 112, 255);
     font-size: 35px;
     margin: 90px 200px 20px;
     padding: 20px;
   }
 
   .heading-one-alt{
-    color: rgb(253, 249, 223);
-    font-size: 35px;
+    color: rgb(169, 112, 255);
+    font-size: 40px;
     margin: 90px 40px 0px;
     padding: 20px;
+    text-align: center;
   }
   
   .heading-two{
-    color: rgb(253, 249, 223);
+    color: rgb(169, 112, 255);
     font-size: 25px;
     margin: 30px 200px 20px;
     padding: 20px;
   }
+
+  .heading-two-alt{
+    color: rgb(169, 112, 255);
+    font-size: 25px;
+    margin: 0px;
+    padding: 20px;
+    text-align: center;
+  }
   
   .heading-three{
-    color: rgb(253, 249, 223);
+    color: rgb(169, 112, 255);
     font-size: 21px;
     margin: 0px 220px;
     text-decoration: underline;
   }
   
   .heading-four{
-    color: rgb(253, 249, 223);
+    color: rgb(169, 112, 255);
     font-size: 21px;
     margin: 15px 220px 0px;
   }
   
   @media (max-width: 1000px){
     .heading-one{
-      color: rgb(253, 249, 223);
+      color: rgb(169, 112, 255);
       font-size: 30px;
       margin: 90px 10px 0px;
       padding: 20px;
@@ -195,7 +208,7 @@
     }
     
     .heading-two{
-      color: rgb(253, 249, 223);
+      color: rgb(169, 112, 255);
       font-size: 25px;
       margin: 0px 10px 0px;
       padding: 20px;
@@ -203,7 +216,7 @@
     }
     
     .heading-three{
-      color: rgb(253, 249, 223);
+      color: rgb(169, 112, 255);
       font-size: 20px;
       margin: 0px 10px 0px;
       text-decoration: underline;
@@ -211,10 +224,17 @@
     }
     
     .heading-four{
-      color: rgb(253, 249, 223);
+      color: rgb(169, 112, 255);
       font-size: 20px;
       margin: 15px 10px 0px;
       text-align: center;
+    }
+
+    .figure-responsive{
+      width: auto;
+      height: auto;
+      margin: 0px;
+      padding: 0px;
     }
   }
   
