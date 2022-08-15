@@ -1,6 +1,6 @@
 
 #logo {
-    color: white;
+    color: rgb(255, 252, 235);;
     font-size: 30px;
     line-height: 80px;
     margin: 30px 30px 30px;
@@ -8,14 +8,14 @@
   }
   
   nav {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(29, 26, 30, 0.6);
     position: fixed;
     top: 0;
     left: 0;
     backdrop-filter: blur(5px);
     height: 80px;
     width: 100%;
-    color: white;
+    color: rgb(255, 252, 235);;
   }
   
   nav ul {
@@ -30,13 +30,13 @@
   
   nav ul li a {
     margin-right: 30px;
-    color: white;
+    color: rgb(255, 252, 235);;
     text-decoration: none;
   }
   
   .menu-bars {
     font-size: 15px;
-    color: azure;
+    color: rgb(255, 252, 235);;
     float: right;
     margin-right: 30px;
     line-height: 80px;
@@ -72,7 +72,7 @@
   
     nav ul li a {
       font-size: 25px;
-      color: white;
+      color: rgb(255, 252, 235);;
     }
   
     #check:checked ~ ul {
@@ -81,14 +81,14 @@
   }
   
   #nav-button:hover{
-    color: azure;
+    color: rgb(255, 252, 235);
     text-decoration: underline;
     text-underline-offset: 20%;
   }
   
   #nav-button-index{
     color: black;
-    background: beige;
+    background: rgb(253, 249, 223);
     width: 100px;
     padding: 15px;
     border: 0;
@@ -99,7 +99,7 @@
   
   #nav-button-blog{
     color: black;
-    background: beige;
+    background: rgb(253, 249, 223);
     width: 100px;
     padding: 15px;
     border: 0;
@@ -110,7 +110,7 @@
   
   #nav-button-projects{
     color: black;
-    background: beige;
+    background: rgb(253, 249, 223);
     width: 100px;
     padding: 15px;
     border: 0;
@@ -121,18 +121,7 @@
   
   #nav-button-styleg{
     color: black;
-    background: beige;
-    width: 100px;
-    padding: 15px;
-    border: 0;
-    border-radius: 15px;
-    outline: none;
-    cursor: pointer;
-  }
-  
-  #nav-button-contact{
-    color: black;
-    background: beige;
+    background: rgb(253, 249, 223);
     width: 100px;
     padding: 15px;
     border: 0;
@@ -163,35 +152,42 @@
   }
   
   .heading-one{
-    color: white;
+    color: rgb(253, 249, 223);
     font-size: 35px;
     margin: 90px 200px 20px;
     padding: 20px;
   }
+
+  .heading-one-alt{
+    color: rgb(253, 249, 223);
+    font-size: 35px;
+    margin: 90px 40px 0px;
+    padding: 20px;
+  }
   
   .heading-two{
-    color: white;
+    color: rgb(253, 249, 223);
     font-size: 25px;
     margin: 30px 200px 20px;
     padding: 20px;
   }
   
   .heading-three{
-    color: white;
+    color: rgb(253, 249, 223);
     font-size: 21px;
     margin: 0px 220px;
     text-decoration: underline;
   }
   
   .heading-four{
-    color: white;
+    color: rgb(253, 249, 223);
     font-size: 21px;
     margin: 15px 220px 0px;
   }
   
   @media (max-width: 1000px){
     .heading-one{
-      color: white;
+      color: rgb(253, 249, 223);
       font-size: 30px;
       margin: 90px 10px 0px;
       padding: 20px;
@@ -199,7 +195,7 @@
     }
     
     .heading-two{
-      color: white;
+      color: rgb(253, 249, 223);
       font-size: 25px;
       margin: 0px 10px 0px;
       padding: 20px;
@@ -207,7 +203,7 @@
     }
     
     .heading-three{
-      color: white;
+      color: rgb(253, 249, 223);
       font-size: 20px;
       margin: 0px 10px 0px;
       text-decoration: underline;
@@ -215,7 +211,7 @@
     }
     
     .heading-four{
-      color: white;
+      color: rgb(253, 249, 223);
       font-size: 20px;
       margin: 15px 10px 0px;
       text-align: center;
@@ -223,7 +219,7 @@
   }
   
   .hyperlink{
-    color: skyblue;
+    color: rgb(169, 112, 255);
   }
   
   .img-responsive{
@@ -240,7 +236,7 @@
     width: 150px;
     margin: 0 45% 10px;
     padding: 15px;
-    background: powderblue;
+    background: rgb(169, 112, 255);
     color: black;
     border: 0;
     border-radius: 10px;
@@ -249,12 +245,12 @@
   }
   
   #totop-button:hover{
-    color: azure;
-    text-decoration: underline;
+    background-color: rgb(145, 70, 255);
+    color: rgb(253, 249, 223);
     text-underline-offset: 20%;
   }
   
   .anchor{
-    color: rgb(122, 255, 255);
+    color: rgb(169, 112, 255);
     text-decoration: none;
   }

@@ -1,6 +1,6 @@
 body {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background: black;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background: rgb(32, 29, 33);
     background-size: cover;
     height: 100vh;
     margin: 0;
@@ -46,12 +46,11 @@ body {
   }
   
   .index-item{
-    
-    background: black;
-    color: azure;
+    background: rgb(32, 29, 33);
+    color: rgb(253, 249, 223);
     font-size: 20px;
     padding: 30px;
-    border: skyblue 1px solid;
+    border: rgb(145, 70, 255) 1px solid;
   }
 
   .img-responsive{

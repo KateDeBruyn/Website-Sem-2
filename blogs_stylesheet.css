@@ -1,6 +1,6 @@
 body {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background: black;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background: rgb(32, 29, 33);
     background-size: cover;
     height: 100vh;
     margin: 0;
@@ -9,7 +9,7 @@ body {
 
   /*BLOGS PAGE STYLING SECTION*/
   
-  .container {
+  /*.container {
     max-width: 960px;
     margin: 100px auto;
     padding: 10px;
@@ -21,26 +21,26 @@ body {
   }
   
   .blog-section {
-    background: black;
+    background: rgb(32, 29, 33);
     color: azure;
     font-size: 20px;
     padding: 20px;
     border: skyblue 1px solid;
-  }
+  }*/
   
-  .blog-section:hover {
-    background: black;
-    color: azure;
+  /*.blog-section:hover {
+    background: rgb(32, 29, 33);
+    color: rgb(253, 249, 223);
     font-size: 20px;
     padding: 20px;
-    border: skyblue 1px solid;
+    border: rgb(145, 70, 255) 1px solid;
     display: inline-block;
-    animation: pulse; /* referring directly to the animation's @keyframe declaration */
-    animation-duration: 1s; /* don't forget to set a duration! */
-  }
+    animation: pulse;
+    animation-duration: 1s;
+  }*/
   
   .continue{
-    color: gray;
+    color: rgb(169, 112, 255);
   }
   
   .continue:active{

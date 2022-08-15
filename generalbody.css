@@ -1,6 +1,6 @@
 body {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background: black;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background: rgb(32, 29, 33);
     background-size: cover;
     height: 100vh;
     margin: 0;
