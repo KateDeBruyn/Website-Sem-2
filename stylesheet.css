@@ -130,6 +130,28 @@
     cursor: pointer;
   }
   
+  /*******************************DROPDOWN MENU*********************************/
+  .dropdown-menu{
+    border: 1px solid rgb(169, 112, 255);
+    width: 120px;
+  }
+
+  .dropdown-menu a{
+    display: block;
+  }
+
+  .dropdown-button{
+    background: white;
+    color: rgb(253, 249, 223);
+    cursor: pointer;
+  }
+
+  .hide{
+    display: none;
+  }
+
+  /*******************************FOOTER*********************************/
+
   footer {
     background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(10px);

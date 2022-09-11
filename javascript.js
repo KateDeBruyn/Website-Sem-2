@@ -4,3 +4,11 @@ const toTop = () => window.scrollTo({top: 0, behavior: "smooth"});
 
 //Animations
 document.documentElement.style.setProperty('--animate-duration', '2s');
+
+//Dropdown menu
+const dropdownButton = document.querySelector(".dropdown-button");
+const dropdownMenu = document.querySelector(".dropdown-menu");
+
+dropdownButton.addEventListener("click", () =>{
+    dropdownMenu.classList.toggle("hide");
+});
