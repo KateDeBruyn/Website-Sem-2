@@ -10,11 +10,14 @@
     <title>Visualisations by KeightyRose</title>
     <link rel="stylesheet" href="normalise.css" />
     <link rel="stylesheet" href="stylesheet.css" />
-    <link rel="stylesheet" href="blogs_stylesheet.css" />
+    <link rel="stylesheet" href="index_stylesheet.css" />
+    <link rel="stylesheet" href="datav_stylesheet.css" />
     <script
       src="https://kit.fontawesome.com/a7ac100429.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="javascript.js"></script>
   </head>
 
   <body>
@@ -39,20 +42,131 @@
       </nav>
     </header>
     <main>
-      <section>
-        <div>
-          <h1 class="heading-one">Data Visualisation Page</h1>
-          <p class="blog-paragraph">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
+      <div class="datav-container">
+        <div class="index-item">
+          <svg id="viz" width="600" height="600"></svg>
+          <!--transform="translate(30, 50)-->
+          <script>
+            let exampleData = [
+              { x: 20, y: 20 },
+              { x: 40, y: 90 },
+              { x: 80, y: 50 },
+            ];
+
+            //Graph variables
+            let margin = 50;
+            let topMargin = 10;
+            let graphHeight = 500;
+
+            let vizArea = d3.select("#viz");
+
+            let xScale = d3.scaleLinear().domain([0, 100]).range([0, 500]); //Here the domain is in % and range in pixels. It is conversion of our data to pixel data.
+            console.log(xScale(75) + "px"); //Show what 75% looks like in the range (375px).
+
+            let yScale = d3
+              .scaleLinear()
+              .domain([0, 100])
+              .range([graphHeight, 0]);
+
+            //The axis of the graph
+            vizArea
+              .append("g")
+              .attr("transform", `translate(${margin} , 10)`) //${margin}, ${height}. The 10 allowed us to the 0 clearly
+              .call(d3.axisRight(yScale)); //Scale of numbers is based on the domain values - 0 to 100.
+
+            vizArea
+              .append("g")
+              .attr(
+                "transform",
+                `translate(${margin} , ${graphHeight + topMargin})`
+              )
+              .call(d3.axisBottom(xScale));
+
+            vizArea
+              .selectAll("dots")
+              .data(exampleData)
+              .enter() //Has to be in order. Every subsequent line/function that we are going to call at end of this enter
+              //will be done for each entry that we have inside this example data. Like a for each loop.
+              .append("circle")
+              .attr("cx", function (d) {
+                return xScale(d.x);
+              })
+              .attr("cy", function (d) {
+                return xScale(d.y);
+              })
+              .attr("r", 7);
+          </script>
         </div>
-      </section>
+        <div class="index-item">
+          <figure class="figure-responsive">
+            <img
+              src="images/pexels-tiger-lily-7109274.jpg"
+              alt="Data Visualisation"
+              class="img-responsive"
+            />
+          </figure>
+        </div>
+      </div>
+      <div class="datav-container">
+        <div class="index-item">
+          <svg id="vizG2" width="600" height="600"></svg>
+          <!--transform="translate(30, 50)-->
+          <script>
+            const dataG2 = [
+              { name: "Nick Eh", days: 24 },
+              { name: "Jojosaysbree", days: 26 },
+              { name: "Altru", days: 15 },
+              { name: "Dodorododo", days: 20 },
+            ];
+
+            let widthG2 = 800;
+            let heightG2 = 400;
+            let marginG2 = { top: 50, bottom: 50, left: 50, right: 50 };
+
+            let vizAreaG2 = d3.select("#vizG2");
+
+            vizAreaG2
+              .append("svg")
+              .attr("height", heightG2 - marginG2.top - marginG2.bottom)
+              .attr("width", widthG2 - marginG2.left - marginG2.right)
+              .attr("viewBox", [0, 0, widthG2, heightG2]);
+
+            let xScaleG2 = d3
+              .scaleBand()
+              .domain(d3.range(dataG2.length))
+              .range([marginG2.left, widthG2 - marginG2.right])
+              .padding(0.1);
+
+            let yScaleG2 = d3
+              .scaleLinear()
+              .domain([0, 30])
+              .range([heightG2, marginG2.bottom - marginG2.top]);
+
+            vizAreaG2
+              .append("g")
+              .attr("fill", "rgb(169, 112, 255)")
+              .selectAll("rect")
+              .data(dataG2.sort((a, b) => d3.descending(a.days, b.days)))
+              .join("rect")
+              .attr("x", (d, i) => xScaleG2(i))
+              .attr("y", (d) => yScaleG2(d.days))
+              .attr("height", (d) => yScaleG2(0) - yScaleG2(d.days))
+              .attr("width", xScaleG2.bandwidth());
+
+            function xAxisG2(g) {
+              g.attr("transform", `translate(0, ${heightG2 - marginG2.bottom})`)
+                .call(d3.axisBottom(xScaleG2).tickFormat((i) => dataG2[i].name))
+                .attr("font-size", "15px");
+            }
+
+            function yAxisG2(g) {}
+
+            vizAreaG2.append("g").call(xAxisG2);
+            vizAreaG2.node();
+          </script>
+        </div>
+        <div class="index-item">Explaination.</div>
+      </div>
     </main>
   </body>
 </html>
