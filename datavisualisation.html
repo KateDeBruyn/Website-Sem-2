@@ -50,67 +50,99 @@
           ></svg>
           <!--transform="translate(30, 50)-->
           <script>
-            const dataG1 = [
-              { name: "Nick Eh", days: 24 },
-              { name: "Jojosaysbree", days: 26 },
-              { name: "Altru", days: 15 },
-              { name: "Dodorododo", days: 20 },
-            ];
+            // const dataG1 = [
+            //   { name: "Nick Eh", days: 24 },
+            //   { name: "Jojosaysbree", days: 26 },
+            //   { name: "Altru", days: 15 },
+            //   { name: "Dodorododo", days: 20 },
+            // ];
 
-            let widthG1 = 600;
-            let heightG1 = 300;
-            let marginG1 = { top: 50, bottom: 50, left: 50, right: 50 };
+            async function getDataG1() {
+              const api_url =
+                "https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15";
+              // Raw data
+              const api_data = await fetch(api_url);
 
-            let vizAreaG1 = d3.select("#vizG1");
+              // Converts raw data to json
+              const api_json = await api_data.json();
 
-            vizAreaG1
-              .append("svg")
-              .attr("height", heightG1 - marginG1.top - marginG1.bottom)
-              .attr("width", widthG1 - marginG1.left - marginG1.right)
-              .attr("viewBox", [0, 0, widthG1, heightG1]);
+              // const dataG1 = api_json.slice(0, 4);
 
-            let xScaleG1 = d3
-              .scaleBand()
-              .domain(d3.range(dataG1.length))
-              .range([marginG1.left, widthG1 - marginG1.right])
-              .padding(0.1);
+              // Created a list of IDs for games that will be displayed
+              const gameIds = ["166", "160047", "247672", "168082"];
 
-            let yScaleG1 = d3
-              .scaleLinear()
-              .domain([0, 30])
-              .range([heightG1, marginG1.bottom - marginG1.top]);
+              // dataG1 is the filtered list
+              const dataG1 = api_json.filter(function (game) {
+                // Returns a list of games that match our list of IDs
+                if (gameIds.includes(game.gameID)) {
+                  return game;
+                }
+              });
 
-            vizAreaG1
-              .append("g")
-              .attr("fill", "rgb(169, 112, 255)")
-              .selectAll("rect")
-              .data(dataG1.sort((a, b) => d3.descending(a.days, b.days)))
-              .join("rect")
-              .attr("x", (d, i) => xScaleG1(i))
-              .attr("y", (d) => yScaleG1(d.days))
-              .attr("height", (d) => yScaleG1(0) - yScaleG1(d.days))
-              .attr("width", xScaleG1.bandwidth());
+              let widthG1 = 600;
+              let heightG1 = 300;
+              let marginG1 = { top: 50, bottom: 50, left: 50, right: 50 };
 
-            function xAxisG1(g) {
-              g.attr(
-                "transform",
-                `translate(0, ${heightG1 - marginG1.bottom + 50})` //${marginG1}, ${heightG1 + marginG1.top}
-              )
-                .call(d3.axisBottom(xScaleG1).tickFormat((i) => dataG1[i].name))
-                .attr("font-size", "15px");
+              let vizAreaG1 = d3.select("#vizG1");
+
+              vizAreaG1
+                .append("svg")
+                .attr("height", heightG1 - marginG1.top - marginG1.bottom)
+                .attr("width", widthG1 - marginG1.left - marginG1.right)
+                .attr("viewBox", [0, 0, widthG1, heightG1]);
+
+              let xScaleG1 = d3
+                .scaleBand()
+                .range([marginG1.left, widthG1 - marginG1.right])
+                .padding(0.1);
+
+              let yScaleG1 = d3
+                .scaleLinear()
+                .domain([0, 100])
+                .range([heightG1, marginG1.bottom - marginG1.top]);
+
+              vizAreaG1
+                .append("g")
+                .attr("fill", "rgb(169, 112, 255)")
+                .selectAll("rect")
+                .data(
+                  dataG1.sort((a, b) =>
+                    d3.descending(a.steamRatingPercent, b.steamRatingPercent)
+                  )
+                )
+                .join("rect")
+                .attr("x", (d, i) => xScaleG1(i))
+                .attr("y", (d) => yScaleG1(d.steamRatingPercent))
+                .attr(
+                  "height",
+                  (d) => yScaleG1(0) - yScaleG1(d.steamRatingPercent)
+                )
+                .attr("width", xScaleG1.bandwidth());
+
+              function xAxisG1(g) {
+                g.attr(
+                  "transform",
+                  `translate(0, ${heightG1 - marginG1.bottom + 50})` //${marginG1}, ${heightG1 + marginG1.top}
+                )
+                  .call(
+                    d3.axisBottom(xScaleG1).tickFormat((i) => dataG1[i].title)
+                  )
+                  .attr("font-size", "15px");
+              }
+
+              function yAxisG1(g) {
+                g.attr("transform", `translate(${marginG1.left}, 0)`)
+                  .call(d3.axisLeft(yScaleG1).ticks(null, dataG1.salePrice))
+                  .attr("font-size", "15px");
+              }
+
+              vizAreaG1.append("g").call(yAxisG1);
+              vizAreaG1.append("g").call(xAxisG1);
+              vizAreaG1.node();
+
+              //Credits to Crypters Infotech (D3.js : Draw A Scatter Plot Using D3.js) for the guidance. Link: https://www.youtube.com/watch?v=SMcD3q3E5lI&t=626s
             }
-
-            function yAxisG1(g) {
-              g.attr("transform", `translate(${marginG1.left}, 0)`)
-                .call(d3.axisLeft(yScaleG1).ticks(null, dataG1.format))
-                .attr("font-size", "15px");
-            }
-
-            vizAreaG1.append("g").call(yAxisG1);
-            vizAreaG1.append("g").call(xAxisG1);
-            vizAreaG1.node();
-
-            //Credits to Crypters Infotech (D3.js : Draw A Scatter Plot Using D3.js) for the guidance. Link: https://www.youtube.com/watch?v=SMcD3q3E5lI&t=626s
+            this.getDataG1();
           </script>
         </div>
         <div class="index-item">

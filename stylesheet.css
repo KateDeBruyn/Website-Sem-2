@@ -462,6 +462,21 @@ body {
   animation-duration: 1s;
 }
 
+.index-item-light{
+  max-width: auto;
+  margin: 80px 300px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 20px;
+  background-color: antiquewhite;
+
+  animation: backInLeft;
+  animation-duration: 1s;
+}
+
 @media (max-width: 1250px){
   .index-container{
     max-width: auto;

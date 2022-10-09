@@ -1,0 +1,26 @@
+[
+    {
+        "title": "Bayonetta",
+        "salePrice": "4.99",
+        "normalPrice": "19.99",
+        "dealRating": "9.0"
+      },
+      {
+        "title": "Mortal Kombat XL",
+        "salePrice": "5.99",
+        "normalPrice": "29.99",
+        "dealRating": "8.8"
+      },
+      {
+        "title": "Fallout 3",
+        "salePrice": "2.49",
+        "normalPrice": "9.99",
+        "dealRating": "8.8"
+      },
+      {
+        "title": "Breath of Ghosts",
+        "salePrice": "2.49",
+        "normalPrice": "24.99",
+        "dealRating": "9.3"
+      }
+]

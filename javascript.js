@@ -9,7 +9,7 @@ document.documentElement.style.setProperty('--animate-duration', '2s');
 const dropdownButton = document.querySelector(".dropdown-button");
 const dropdownMenu = document.querySelector(".dropdown-menu");
 
-dropdownButton.addEventListener("click", dropDownClick());
+//dropdownButton.addEventListener("click", dropDownClick());
 
 function dropDownClick(){
     dropdownMenu.classList.toggle("hide");
