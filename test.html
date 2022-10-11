@@ -104,17 +104,6 @@
                     "translate(" + margin.left + "," + margin.top + ")"
                   );
 
-                //   let myDataVisArea = d3.select("#my_dataviz");
-
-                //   myDataVisArea
-                //     .append("text")
-                //     .attr("class", "x label")
-                //     .attr("text-anchor", "end")
-                //     .attr("x", width)
-                //     .attr("y", height - 6)
-                //     .attr("fill", "white")
-                //     .text("Assignments");
-
                 // Using manually created CSV
                 //d3.csv((href = "jsontocsv.csv"), function (data)
 
@@ -124,82 +113,84 @@
                 console.log(csvData);
 
                 // Parse the Data
-
                 parsData(csvData);
-                // d3.csvParse(csvData, function (data) {
-                //   console.log(data);
-                //   // List of subgroups = header of the csv files = soil condition here
-                //   var subgroups = data.columns.slice(1);
 
-                //   // List of groups = species here = value of the first column called group -> I show them on the X axis
-                //   var groups = d3
-                //     .map(data, function (d) {
-                //       return d.title;
-                //     })
-                //     .keys();
+                d3.csv((href = "jsontocsv.csv"), function (data) {
+                  console.log(data);
+                  // List of subgroups = header of the csv files = soil condition here
+                  var subgroups = data.columns.slice(1);
 
-                //   // Add X axis
-                //   var x = d3
-                //     .scaleBand()
-                //     .domain(groups)
-                //     .range([0, width])
-                //     .padding([0.2]);
-                //   svg
-                //     .append("g")
-                //     .attr("transform", "translate(0," + height + ")")
-                //     .call(d3.axisBottom(x).tickSize(0));
+                  // List of groups = species here = value of the first column called group -> I show them on the X axis
+                  var groups = d3
+                    .map(data, function (d) {
+                      return d.title;
+                    })
+                    .keys();
 
-                //   // Add Y axis
-                //   var y = d3.scaleLinear().domain([0, 40]).range([height, 0]);
-                //   svg.append("g").call(d3.axisLeft(y));
+                  // Add X axis
+                  var x = d3
+                    .scaleBand()
+                    .domain(groups)
+                    .range([0, width])
+                    .padding([0.2]);
+                  svg
+                    .append("g")
+                    .attr("transform", "translate(0," + height + ")")
+                    .call(d3.axisBottom(x).tickSize(0));
 
-                //   // Another scale for subgroup position?
-                //   var xSubgroup = d3
-                //     .scaleBand()
-                //     .domain(subgroups)
-                //     .range([0, x.bandwidth()])
-                //     .padding([0.05]);
+                  // Add Y axis
+                  var y = d3.scaleLinear().domain([0, 40]).range([height, 0]);
+                  svg.append("g").call(d3.axisLeft(y));
 
-                //   // color palette = one color per subgroup
-                //   var color = d3
-                //     .scaleOrdinal()
-                //     .domain(subgroups)
-                //     .range(["#e41a1c", "#377eb8", "#4daf4a"]);
+                  // Another scale for subgroup position?
+                  var xSubgroup = d3
+                    .scaleBand()
+                    .domain(subgroups)
+                    .range([0, x.bandwidth()])
+                    .padding([0.05]);
 
-                //   // Show the bars
-                //   svg
-                //     .append("g")
-                //     .selectAll("g")
-                //     // Enter in data = loop group per group
-                //     .data(data)
-                //     .enter()
-                //     .append("g")
-                //     .attr("transform", function (d) {
-                //       return "translate(" + x(d.title) + ",0)";
-                //     })
-                //     .selectAll("rect")
-                //     .data(function (d) {
-                //       return subgroups.map(function (key) {
-                //         return { key: key, value: d[key] };
-                //       });
-                //     })
-                //     .enter()
-                //     .append("rect")
-                //     .attr("x", function (d) {
-                //       return xSubgroup(d.key);
-                //     })
-                //     .attr("y", function (d) {
-                //       return y(d.value);
-                //     })
-                //     .attr("width", xSubgroup.bandwidth())
-                //     .attr("height", function (d) {
-                //       return height - y(d.value);
-                //     })
-                //     .attr("fill", function (d) {
-                //       return color(d.key);
-                //     });
-                // });
+                  // color palette = one color per subgroup
+                  var color = d3
+                    .scaleOrdinal()
+                    .domain(subgroups)
+                    .range(["#e41a1c", "#377eb8", "#4daf4a"]);
+
+                  // Show the bars
+                  svg
+                    .append("g")
+                    .selectAll("g")
+                    // Enter in data = loop group per group
+                    .data(data)
+                    .enter()
+                    .append("g")
+                    .attr("transform", function (d) {
+                      return "translate(" + x(d.title) + ",0)";
+                    })
+                    .selectAll("rect")
+                    .data(function (d) {
+                      return subgroups.map(function (key) {
+                        return { key: key, value: d[key] };
+                      });
+                    })
+                    .enter()
+                    .append("rect")
+                    .attr("x", function (d) {
+                      return xSubgroup(d.key);
+                    })
+                    .attr("y", function (d) {
+                      return y(d.value);
+                    })
+                    .attr("width", xSubgroup.bandwidth())
+                    .attr("height", function (d) {
+                      return height - y(d.value);
+                    })
+                    .attr("fill", function (d) {
+                      return color(d.key);
+                    });
+                });
               }
+
+              // Ideal option: function parsData(data)
 
               function parsData(data) {
                 console.log(data);
