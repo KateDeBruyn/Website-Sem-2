@@ -14,7 +14,6 @@
       src="https://kit.fontawesome.com/a7ac100429.js"
       crossorigin="anonymous"
     ></script>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="javascript.js"></script>
   </head>
@@ -43,191 +42,314 @@
     <main>
       <div class="datav-container">
         <div class="index-item">
-          <svg
-            id="vizG1"
-            width="600"
-            height="400"
-            transform="translate(10, 10)"
-          ></svg>
-          <script>
-            
+          <div id="graphOne">
+            <script>
+              // This is what I attempted to try an use the API, but it stopped working.
+              // I think the issue is in the forEach loop. It stops after returning the first ID it can find.
+              // For the life of me I don't know why. But because it wasn't working I resorting to use a csv.
+              // But I wanted to leave this here to show you how I was trying to go about using the API data initially.
+              async function getDataG1() {
+                const api_url =
+                  "https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15";
+                // Raw data
+                const api_data = await fetch(api_url);
 
-            d3.csv(href="jsontocsv.csv", function(data) {
+                // Converts raw data to json
+                const api_json = await api_data.json();
 
-            let widthG1 = 600;
-            let heightG1 = 400;
-            let marginG1 = { top: 50, bottom: 50, left: 50, right: 50 };
+                // const dataG1 = api_json.slice(0, 4);
 
-            let vizAreaG1 = d3.select("#vizG1");
+                // Created a list of IDs for games that will be displayed
+                const gameIds = ["166", "160047", "247672", "168082"];
 
-            vizAreaG1
-              .append("svg")
-              .attr("height", heightG1 - marginG1.top - marginG1.bottom)
-              .attr("width", widthG1 - marginG1.left - marginG1.right)
-              .attr("viewBox", [0, 0, widthG1, heightG1]);
+                // dataG1 is the filtered list
+                const dataG1 = api_json.filter(function (game) {
+                  // Returns a list of games that match our list of IDs
+                  gameIds.forEach((element) => {
+                    if (gameIds.includes(game.gameID)) {
+                      console.log(element);
+                      return game;
+                    }
+                  });
+                });
 
-            let xScaleG1 = d3
-              .scaleBand()
-              .range([0, widthG1])
-              .domain(
-                dataG1.map(function (d) {
-                  return d.title;
-                })
-              )
-              .padding(0.1);
+                console.log(dataG1);
+              }
 
-            let yScaleG1 = d3
-              .scaleLinear()
-              .domain([0, 10])
-              .range([heightG1, marginG1.bottom - marginG1.top]);
+              // set the dimensions and margins of the graph
+              var marginOne = { top: 30, right: 30, bottom: 70, left: 60 },
+                widthOne = 460 - marginOne.left - marginOne.right,
+                heightOne = 400 - marginOne.top - marginOne.bottom;
 
-            vizAreaG1
-              .append("g")
-              .attr("fill", "rgb(169, 112, 255)")
-              .selectAll("rect")
-              .data(
-                dataG1.sort((a, b) => d3.descending(a.dealRating, b.dealRating))
-              )
-              .join("rect")
-              .attr("x", (d, i) => xScaleG1(i))
-              .attr("y", (d) => yScaleG1(d.dealRating))
-              .attr("height", (d) => yScaleG1(0) - yScaleG1(d.dealRating))
-              .attr("width", xScaleG1.bandwidth());
+              // append the svg object to the body of the page
+              var svgOne = d3
+                .select("#graphOne")
+                .append("svg")
+                .attr("width", widthOne + marginOne.left + marginOne.right)
+                .attr("height", heightOne + marginOne.top + marginOne.bottom)
+                .append("g")
+                .attr(
+                  "transform",
+                  "translate(" + marginOne.left + "," + marginOne.top + ")"
+                );
 
-            function xAxisG1(g) {
-              g.attr(
-                "transform",
-                `translate(0, ${heightG1 - marginG1.bottom + 50})` //${marginG1}, ${heightG1 + marginG1.top}
-              )
-                .call(
-                  d3.axisBottom(xScaleG1).tickFormat(dataG1.title)
+              // Parse the Data
+              d3.csv((href = "jsontocsvOne.csv"), function (dataOne) {
+                // X axis
+                var x = d3
+                  .scaleBand()
+                  .range([0, widthOne])
+                  .domain(
+                    dataOne.map(function (d) {
+                      return d.title;
+                    })
+                  )
+                  .padding(0.2);
+                svgOne
+                  .append("g")
+                  .attr("transform", "translate(0," + heightOne + ")")
+                  .call(d3.axisBottom(x))
+                  .selectAll("text")
+                  .attr("transform", "translate(-10,0)rotate(-45)")
+                  .style("text-anchor", "end");
+
+                // Add Y axis
+                var y = d3.scaleLinear().domain([0, 10]).range([heightOne, 0]);
+                svgOne.append("g").call(d3.axisLeft(y));
+
+                // Bars
+                svgOne
+                  .selectAll("rect")
+                  .data(dataOne)
+                  .enter()
+                  .append("rect")
+                  .attr("x", function (d) {
+                    return x(d.title);
+                  })
+                  .attr("y", function (d) {
+                    return y(d.Value);
+                  })
+                  .attr("height", function (d) {
+                    return heightOne - y(d.dealRating);
+                  })
+                  .attr("width", x.bandwidth())
+                  .attr("fill", "#69b3a2");
+              });
+            </script>
+          </div>
+        </div>
+        <div class="index-item">
+          These graphs show four different games and the deal data that
+          surrounds them. Following this, users can find the original cost of
+          the games and their deal prices, as well as the ratings around these
+          deals. This particular graph shows the deal ratings of each game for
+          users to see which game could offer them the best deal.
+        </div>
+        <div class="index-item">
+          The following graph shows the price comparisons between the sale and
+          original prices of the games.
+        </div>
+        <div class="index-item">
+          <div id="graphTwo">
+            <script>
+              // set the dimensions and margins of the graph
+              var marginTwo = { top: 10, right: 30, bottom: 20, left: 50 },
+                widthTwo = 460 - marginTwo.left - marginTwo.right,
+                heightTwo = 400 - marginTwo.top - marginTwo.bottom;
+
+              // append the svg object to the body of the page
+              var svgTwo = d3
+                .select("#graphTwo")
+                .append("svg")
+                .attr("width", widthTwo + marginTwo.left + marginTwo.right)
+                .attr("height", heightTwo + marginTwo.top + marginTwo.bottom)
+                .append("g")
+                .attr(
+                  "transform",
+                  "translate(" + marginTwo.left + "," + marginTwo.top + ")"
+                );
+
+              // Parse the Data
+              d3.csv((href = "jsontocsvTwo.csv"), function (data) {
+                // List of subgroups = header of the csv files = soil condition here
+                var subgroups = data.columns.slice(1);
+
+                // List of groups = species here = value of the first column called group -> I show them on the X axis
+                var groups = d3
+                  .map(data, function (d) {
+                    return d.title;
+                  })
+                  .keys();
+
+                // Add X axis
+                var x = d3
+                  .scaleBand()
+                  .domain(groups)
+                  .range([0, widthTwo])
+                  .padding([0.2]);
+                svgTwo
+                  .append("g")
+                  .attr("transform", "translate(0," + heightTwo + ")")
+                  .call(d3.axisBottom(x).tickSize(0));
+
+                // Add Y axis
+                var y = d3.scaleLinear().domain([0, 40]).range([heightTwo, 0]);
+                svgTwo.append("g").call(d3.axisLeft(y));
+
+                // Another scale for subgroup position?
+                var xSubgroup = d3
+                  .scaleBand()
+                  .domain(subgroups)
+                  .range([0, x.bandwidth()])
+                  .padding([0.05]);
+
+                // color palette = one color per subgroup
+                var color = d3
+                  .scaleOrdinal()
+                  .domain(subgroups)
+                  .range(["#e41a1c", "#377eb8", "#4daf4a"]);
+
+                // Show the bars
+                svgTwo
+                  .append("g")
+                  .selectAll("g")
+                  // Enter in data = loop group per group
+                  .data(data)
+                  .enter()
+                  .append("g")
+                  .attr("transform", function (d) {
+                    return "translate(" + x(d.title) + ",0)";
+                  })
+                  .selectAll("rect")
+                  .data(function (d) {
+                    return subgroups.map(function (key) {
+                      return { key: key, value: d[key] };
+                    });
+                  })
+                  .enter()
+                  .append("rect")
+                  .attr("x", function (d) {
+                    return xSubgroup(d.key);
+                  })
+                  .attr("y", function (d) {
+                    return y(d.value);
+                  })
+                  .attr("width", xSubgroup.bandwidth())
+                  .attr("height", function (d) {
+                    return heightTwo - y(d.value);
+                  })
+                  .attr("fill", function (d) {
+                    return color(d.key);
+                  });
+              });
+            </script>
+          </div>
+        </div>
+        <div class="index-item">
+          <button onclick="update(data1)">Steam Rating</button>
+          <button onclick="update(data2)">Savings</button>
+          <div id="graphThree">
+            <script>
+              // Steam Rating
+              var data1 = [
+                { title: "Bayonetta", value: 92 },
+                { title: "Mortal Kombat XL", value: 85 },
+                { title: "Fallout 3", value: 78 },
+                { title: "Breath of Ghosts", value: 52 },
+              ];
+
+              // Savings
+              var data2 = [
+                { title: "Bayonetta", value: 75 },
+                { title: "Mortal Kombat XL", value: 80 },
+                { title: "Fallout 3", value: 75 },
+                { title: "Breath of Ghosts", value: 90 },
+              ];
+
+              // set the dimensions and margins of the graph
+              var marginThree = { top: 30, right: 30, bottom: 70, left: 60 },
+                widthThree = 460 - marginThree.left - marginThree.right,
+                heightThree = 400 - marginThree.top - marginThree.bottom;
+
+              // append the svg object to the body of the page
+              var svg = d3
+                .select("#graphThree")
+                .append("svg")
+                .attr(
+                  "width",
+                  widthThree + marginThree.left + marginThree.right
                 )
-                .attr("font-size", "15px");
-            }
+                .attr(
+                  "height",
+                  heightThree + marginThree.top + marginThree.bottom
+                )
+                .append("g")
+                .attr(
+                  "transform",
+                  "translate(" + marginThree.left + "," + marginThree.top + ")"
+                );
 
-            function yAxisG1(g) {
-              g.attr("transform", `translate(${marginG1.left}, 0)`)
-                .call(d3.axisLeft(yScaleG1).ticks(null, dataG1.dealRating))
-                .attr("font-size", "15px");
-            }
+              // Initialize the X axis
+              var x = d3.scaleBand().range([0, widthThree]).padding(0.2);
+              var xAxis = svg
+                .append("g")
+                .attr("transform", "translate(0," + heightThree + ")");
 
-            vizAreaG1.append("g").call(yAxisG1);
-            vizAreaG1.append("g").call(xAxisG1);
-            vizAreaG1.node();
+              // Initialize the Y axis
+              var y = d3.scaleLinear().range([heightThree, 0]);
+              var yAxis = svg.append("g").attr("class", "myYaxis");
 
-            //Credits to Crypters Infotech (D3.js : Draw A Scatter Plot Using D3.js) for the guidance. Link: https://www.youtube.com/watch?v=SMcD3q3E5lI&t=626s
+              // A function that create / update the plot for a given variable:
+              function update(data) {
+                // Update the X axis
+                x.domain(
+                  data.map(function (d) {
+                    return d.title;
+                  })
+                );
+                xAxis.call(d3.axisBottom(x));
 
-            }
-          </script>
+                // Update the Y axis
+                y.domain([
+                  0,
+                  d3.max(data, function (d) {
+                    return d.value;
+                  }),
+                ]);
+                yAxis.transition().duration(1000).call(d3.axisLeft(y));
+
+                // Create the u variable
+                var u = svg.selectAll("rect").data(data);
+
+                u.enter()
+                  .append("rect") // Add a new rect for each new elements
+                  .merge(u) // get the already existing elements as well
+                  .transition() // and apply changes to all of them
+                  .duration(1000)
+                  .attr("x", function (d) {
+                    return x(d.title);
+                  })
+                  .attr("y", function (d) {
+                    return y(d.value);
+                  })
+                  .attr("width", x.bandwidth())
+                  .attr("height", function (d) {
+                    return heightThree - y(d.value);
+                  })
+                  .attr("fill", "#69b3a2");
+
+                // If less group in the new dataset, I delete the ones not in use anymore
+                u.exit().remove();
+              }
+
+              // Initialize the plot with the first dataset
+              this.update(data1);
+            </script>
+          </div>
         </div>
         <div class="index-item">
-          A static graph showing how many days out of a month that Twitch
-          streamers were live.
-        </div>
-        <div class="index-item">
-          <svg
-            id="vizG2"
-            width="600"
-            height="400"
-            transform="translate(10, 10)"
-          ></svg>
-          <script>
-            const dataG2 = [
-              { assignment: 1, score: 54 },
-              { assignment: 2, score: 67 },
-              { assignment: 3, score: 94 },
-              { assignment: 4, score: 76 },
-              { assignment: 5, score: 52 },
-              { assignment: 6, score: 68 },
-              { assignment: 7, score: 75 },
-              { assignment: 8, score: 90 },
-            ];
-
-            let widthG2 = 550;
-            let heightG2 = 400;
-            let marginG2 = 50;
-
-            let vizAreaG2 = d3.select("#vizG2");
-
-            vizAreaG2
-              .append("svg")
-              .attr("height", heightG2 - marginG2.top - marginG2.bottom)
-              .attr("width", widthG2 - marginG2.left - marginG2.right)
-              .attr("viewBox", [0, 0, widthG2, heightG2])
-              .attr("transform", `translate(${marginG2} , 10)`);
-
-            let xScaleG2 = d3
-              .scaleLinear()
-              .domain([
-                0,
-                d3.max(dataG2, function (d) {
-                  return d.assignment;
-                }),
-              ])
-              .range([0, widthG2 - marginG2]);
-
-            let yScaleG2 = d3
-              .scaleLinear()
-              .domain([0, 100])
-              .range([heightG2 - marginG2, 0]);
-
-            let xAxis = d3.axisBottom(xScaleG2);
-            let yAxis = d3.axisLeft(yScaleG2);
-
-            vizAreaG2
-              .append("text")
-              .attr("class", "x label")
-              .attr("text-anchor", "end")
-              .attr("x", widthG2)
-              .attr("y", heightG2 - 6)
-              .attr("fill", "white")
-              .text("Assignments");
-
-            vizAreaG2
-              .append("text")
-              .attr("class", "y label")
-              .attr("text-anchor", "end")
-              .attr("y", 6)
-              .attr("dy", ".75em")
-              .attr("transform", "rotate(-90)")
-              .attr("fill", "white")
-              .text("Marks as percentages");
-
-            vizAreaG2
-              .append("g")
-              .attr("transform", `translate(50, 350)`)
-              .call(xAxis);
-            vizAreaG2
-              .append("g")
-              .attr("transform", `translate(50, 0)`)
-              .call(yAxis);
-
-            let dots = vizAreaG2.append("g").selectAll("dot").data(dataG2);
-
-            dots
-              .enter()
-              .append("circle")
-              .attr("cx", function (d) {
-                return xScaleG2(d.assignment);
-              })
-              .attr("cy", function (d) {
-                return yScaleG2(d.score);
-              })
-              .attr("r", 8)
-              .attr("transform", `translate(50, 0)`)
-              .style("fill", "rgb(169, 112, 255)");
-
-            //Credits to Crypters Infotech (D3.js : Draw A Scatter Plot Using D3.js) for the guidance. Link: https://www.youtube.com/watch?v=SMcD3q3E5lI&t=626s
-          </script>
-        </div>
-        <div class="index-item">
-          A static scatter plot showing a student's marks across eight
-          assignments.
-        </div>
-        <div>
-          <button onclick="update(data1)">Variable 1</button>
-          <button onclick="update(data2)">Variable 2</button>
-          <div id="interactive_G3"></div>
+          An interactive graph that shows the Steam Ratings and Savings, as
+          percentages, that each game offers.
         </div>
       </div>
     </main>
