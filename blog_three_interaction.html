@@ -44,7 +44,7 @@
 
     <main>
       <article>
-        <h1 class="heading-one">Data-Driven Art Reflection</h1>
+        <h1 class="heading-one">Defining and Understanding Interaction</h1>
         <p class="blog-paragraph">
           Interaction in data visualisation has become an area of study in its
           own right that draws from the field of human-computer interaction
@@ -61,187 +61,239 @@
           interactive pie chart below are some summarising points to the
           concepts Dimara and Perin base their research on.
         </p>
+        <p class="blog-paragraph">
+          The purpose of the pie chart is to demonstrate not only how broad the
+          definition for interaction may be, but to highlight how various parts
+          of the definition weigh differently depending on any given scenario.
+          The ideas of interaction as a mediating entity, or human intent, as a
+          dialogue, or as an amplification of cognition, are derived from the
+          visualisation view. Whereas the HCI view sees interaction as a
+          transmission of information, a cycle of communication, actions with a
+          start, end and response, or a causal relationship. Both views include
+          various definitions within themselves which is why I chose to
+          represent this multi-faceted concept of interaction in a chart that
+          shifts the weight of each definition. The shift in weight, enabled by
+          the user's click of the button, represents how some definitions may be
+          more applicable and appropriate than others depending on the kind of
+          interaction one may be observing.
+        </p>
+        <p class="blog-paragraph">
+          In the visualisation research community, Dimara and Perin (2020, p. 6)
+          found that overarching definition for interaction is “a dialogue
+          between a human user and the visualization system over a central
+          object of interest: the data”. There are also three approaches;
+          system-, task-, and human-centric, that describe the concept of
+          interaction within the field of visualisation. This is where
+          interaction intends to amplify cognition during a person's exploration
+          of data. It is important to note that the person, the user, is also
+          “in control of the information space” (Dimara and Perin, 2020, p. 5).
+          Some of the properties the community assigns interaction with include
+          granularity (micro and macro actions), continuous interactions versus
+          discrete, and degree of directness and indirectness. The issues that
+          lie within the visualisation community's definition of interaction is
+          that the terms used to describe interaction are rarely agreed upon.
+          However, the authors do offer a compacted definition and describe
+          interaction for visualisation as “the interplay between a person and a
+          data interface involving a data-related intent, at least one action
+          from the person and an interface reaction that is perceived as such”
+          (Dimara and Perin, 2020, p. 8).
+        </p>
+        <p class="blog-paragraph">
+          The HCI view includes seven concepts that systematise what the
+          community believes as good interaction. These include dialogue (where
+          the cycle of communication definition comes in), transmission,
+          control, tool use, optimal behaviour, embodiment and experience.
+          Dialogue involves the cycle of communitive actions; transmission sees
+          the transmittal of information between users and computers; control
+          defines interaction in systems consisted of goals, inputs and outputs,
+          responses and states; tools refer to those that are used to enable
+          action; behaviour sees interaction as an adaptive behaviour;
+          embodiment relates to the action of being in the world and
+          participation; and finally, experience defines interaction as
+          phenomena shaped by a user's expectation, reaction and recall (Dimara
+          and Perin 2020, p. 6).
+        </p>
       </article>
+    </main>
+    <section>
       <div id="button-container">
         <button class="randomize">Definitions</button>
       </div>
-      <div id="piechart-container">
-        <!--D3 Interactive Graph-->
-        <script>
-          var svg = d3.select("body").append("svg").append("g");
+      <!--D3 Interactive Graph-->
+      <script>
+        var svg = d3.select("body").append("svg").append("g");
 
-          svg.append("g").attr("class", "slices");
-          svg.append("g").attr("class", "labels");
-          svg.append("g").attr("class", "lines");
+        svg.append("g").attr("class", "slices");
+        svg.append("g").attr("class", "labels");
+        svg.append("g").attr("class", "lines");
 
-          var width = 960,
-            height = 450,
-            radius = Math.min(width, height) / 2;
+        var width = 960,
+          height = 450,
+          radius = Math.min(width, height) / 2;
 
-          var pie = d3.layout
-            .pie()
-            .sort(null)
-            .value(function (d) {
-              return d.value;
-            });
-
-          var arc = d3.svg
-            .arc()
-            .outerRadius(radius * 0.8)
-            .innerRadius(radius * 0.4);
-
-          var outerArc = d3.svg
-            .arc()
-            .innerRadius(radius * 0.9)
-            .outerRadius(radius * 0.9);
-
-          svg.attr(
-            "transform",
-            "translate(" + width / 2 + "," + height / 2 + ")"
-          );
-
-          var key = function (d) {
-            return d.data.label;
-          };
-
-          var color = d3.scale
-            .ordinal()
-            .domain([
-              "A causal relationship",
-              "Operationalises flexibility",
-              "User and system dialogue",
-              "A mediating entity",
-              "Action with start, end, response",
-              "Human intent",
-              "Amplifies cognition",
-              "Cycle of communication acts",
-              "Transmission of information",
-            ])
-            .range([
-              "#98abc5",
-              "#8a89a6",
-              "#7b6888",
-              "#6b486b",
-              "#a05d56",
-              "#d0743c",
-              "#ff8c00",
-            ]);
-
-          function randomData() {
-            var labels = color.domain();
-            return labels.map(function (label) {
-              return { label: label, value: Math.random() };
-            });
-          }
-
-          change(randomData());
-
-          d3.select(".randomize").on("click", function () {
-            change(randomData());
+        var pie = d3.layout
+          .pie()
+          .sort(null)
+          .value(function (d) {
+            return d.value;
           });
 
-          function change(data) {
-            /* ------- PIE SLICES -------*/
-            var slice = svg
-              .select(".slices")
-              .selectAll("path.slice")
-              .data(pie(data), key);
+        var arc = d3.svg
+          .arc()
+          .outerRadius(radius * 0.8)
+          .innerRadius(radius * 0.4);
 
-            slice
-              .enter()
-              .insert("path")
-              .style("fill", function (d) {
-                return color(d.data.label);
-              })
-              .attr("class", "slice");
+        var outerArc = d3.svg
+          .arc()
+          .innerRadius(radius * 0.9)
+          .outerRadius(radius * 0.9);
 
-            slice
-              .transition()
-              .duration(1000)
-              .attrTween("d", function (d) {
-                this._current = this._current || d;
-                var interpolate = d3.interpolate(this._current, d);
-                this._current = interpolate(0);
-                return function (t) {
-                  return arc(interpolate(t));
-                };
-              });
+        svg.attr(
+          "transform",
+          "translate(" + width / 2 + "," + height / 2 + ")"
+        );
 
-            slice.exit().remove();
+        var key = function (d) {
+          return d.data.label;
+        };
 
-            /* ------- TEXT LABELS -------*/
+        var color = d3.scale
+          .ordinal()
+          .domain([
+            "A causal relationship",
+            "A user and system dialogue",
+            "A mediating entity",
+            "Action with start, end, response",
+            "Human intent",
+            "Amplifies cognition",
+            "Cycle of communication acts",
+            "Transmission of information",
+          ])
+          .range([
+            "#a05d56",
+            "#98abc5",
+            "#8a89a6",
+            "#7b6888",
+            "#6b486b",
+            "#a05d56",
+            "#d0743c",
+            "#ff8c00",
+          ]);
 
-            var text = svg
-              .select(".labels")
-              .selectAll("text")
-              .data(pie(data), key);
+        function randomData() {
+          var labels = color.domain();
+          return labels.map(function (label) {
+            return { label: label, value: Math.random() };
+          });
+        }
 
-            text
-              .enter()
-              .append("text")
-              .attr("dy", ".35em")
-              .text(function (d) {
-                return d.data.label;
-              });
+        change(randomData());
 
-            function midAngle(d) {
-              return d.startAngle + (d.endAngle - d.startAngle) / 2;
-            }
+        d3.select(".randomize").on("click", function () {
+          change(randomData());
+        });
 
-            text
-              .transition()
-              .duration(1000)
-              .attrTween("transform", function (d) {
-                this._current = this._current || d;
-                var interpolate = d3.interpolate(this._current, d);
-                this._current = interpolate(0);
-                return function (t) {
-                  var d2 = interpolate(t);
-                  var pos = outerArc.centroid(d2);
-                  pos[0] = radius * (midAngle(d2) < Math.PI ? 1 : -1);
-                  return "translate(" + pos + ")";
-                };
-              })
-              .styleTween("text-anchor", function (d) {
-                this._current = this._current || d;
-                var interpolate = d3.interpolate(this._current, d);
-                this._current = interpolate(0);
-                return function (t) {
-                  var d2 = interpolate(t);
-                  return midAngle(d2) < Math.PI ? "start" : "end";
-                };
-              });
+        function change(data) {
+          /* ------- PIE SLICES -------*/
+          var slice = svg
+            .select(".slices")
+            .selectAll("path.slice")
+            .data(pie(data), key);
 
-            text.exit().remove();
+          slice
+            .enter()
+            .insert("path")
+            .style("fill", function (d) {
+              return color(d.data.label);
+            })
+            .attr("class", "slice");
 
-            /* ------- SLICE TO TEXT POLYLINES -------*/
+          slice
+            .transition()
+            .duration(1000)
+            .attrTween("d", function (d) {
+              this._current = this._current || d;
+              var interpolate = d3.interpolate(this._current, d);
+              this._current = interpolate(0);
+              return function (t) {
+                return arc(interpolate(t));
+              };
+            });
 
-            var polyline = svg
-              .select(".lines")
-              .selectAll("polyline")
-              .data(pie(data), key);
+          slice.exit().remove();
 
-            polyline.enter().append("polyline");
+          /* ------- TEXT LABELS -------*/
 
-            polyline
-              .transition()
-              .duration(1000)
-              .attrTween("points", function (d) {
-                this._current = this._current || d;
-                var interpolate = d3.interpolate(this._current, d);
-                this._current = interpolate(0);
-                return function (t) {
-                  var d2 = interpolate(t);
-                  var pos = outerArc.centroid(d2);
-                  pos[0] = radius * 0.95 * (midAngle(d2) < Math.PI ? 1 : -1);
-                  return [arc.centroid(d2), outerArc.centroid(d2), pos];
-                };
-              });
+          var text = svg
+            .select(".labels")
+            .selectAll("text")
+            .data(pie(data), key);
 
-            polyline.exit().remove();
+          text
+            .enter()
+            .append("text")
+            .attr("dy", ".35em")
+            .text(function (d) {
+              return d.data.label;
+            });
+
+          function midAngle(d) {
+            return d.startAngle + (d.endAngle - d.startAngle) / 2;
           }
-        </script>
-      </div>
-    </main>
+
+          text
+            .transition()
+            .duration(1000)
+            .attrTween("transform", function (d) {
+              this._current = this._current || d;
+              var interpolate = d3.interpolate(this._current, d);
+              this._current = interpolate(0);
+              return function (t) {
+                var d2 = interpolate(t);
+                var pos = outerArc.centroid(d2);
+                pos[0] = radius * (midAngle(d2) < Math.PI ? 1 : -1);
+                return "translate(" + pos + ")";
+              };
+            })
+            .styleTween("text-anchor", function (d) {
+              this._current = this._current || d;
+              var interpolate = d3.interpolate(this._current, d);
+              this._current = interpolate(0);
+              return function (t) {
+                var d2 = interpolate(t);
+                return midAngle(d2) < Math.PI ? "start" : "end";
+              };
+            });
+
+          text.exit().remove();
+
+          /* ------- SLICE TO TEXT POLYLINES -------*/
+
+          var polyline = svg
+            .select(".lines")
+            .selectAll("polyline")
+            .data(pie(data), key);
+
+          polyline.enter().append("polyline");
+
+          polyline
+            .transition()
+            .duration(1000)
+            .attrTween("points", function (d) {
+              this._current = this._current || d;
+              var interpolate = d3.interpolate(this._current, d);
+              this._current = interpolate(0);
+              return function (t) {
+                var d2 = interpolate(t);
+                var pos = outerArc.centroid(d2);
+                pos[0] = radius * 0.95 * (midAngle(d2) < Math.PI ? 1 : -1);
+                return [arc.centroid(d2), outerArc.centroid(d2), pos];
+              };
+            });
+
+          polyline.exit().remove();
+        }
+      </script>
+    </section>
   </body>
 </html>
