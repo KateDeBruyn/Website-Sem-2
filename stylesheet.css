@@ -167,7 +167,8 @@ body {
     background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(10px);
     height: 80px;
-    width: 100%;
+    width: auto;
+    margin-top: 100px;
     padding: 20px;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
@@ -227,6 +228,13 @@ body {
     margin: 0px 220px;
     text-decoration: underline;
   }
+
+  .heading-three-alt{
+    color: rgb(169, 112, 255);
+    font-size: 15px;
+    margin: 0px;
+    padding: 20px;
+  }
   
   .heading-four{
     color: rgb(169, 112, 255);
@@ -280,6 +288,7 @@ body {
 
   .hyperlink{
   color: rgb(169, 112, 255);
+  text-decoration: none;
   }
 
   .img-center {
@@ -465,8 +474,8 @@ body {
   
 .index-container{
   max-width: 960px;
-  margin: 0px auto;
-  padding: 20px;
+  margin: 40px auto;
+  padding: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 20px;
@@ -491,11 +500,11 @@ body {
   max-width: auto;
   margin: 80px 30px;
   padding: 20px;
-  display: grid;
+  display: block;
   /*grid-template-columns: 1fr;
   grid-template-rows: 1fr;*/
-  column-gap: 20px;
-  row-gap: 20px;
+  /*column-gap: 20px;
+  row-gap: 20px;*/
   background-color: antiquewhite;
 }
 
