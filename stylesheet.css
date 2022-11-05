@@ -294,6 +294,14 @@ body {
   height: auto;
   }
 
+  #img-art{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: auto;
+  }
+
   .video-responsive{
   width: 100%;
   height: auto;
