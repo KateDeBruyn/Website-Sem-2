@@ -447,13 +447,25 @@ body {
     margin: 100px 220px;
     padding: 20px;
     display: grid;
-    grid-template-columns: 1fr 0.5fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    column-gap: 10px;
+    column-gap: 15px;
     row-gap: 20px;
   
     animation: backInLeft;
     animation-duration: 1s;
+  }
+
+  .data-v-item{
+    background: rgb(253, 249, 223);
+    color: rgb(32, 29, 33);
+    font-size: 20px;
+    max-width: auto;
+    margin: 20px 0px;
+    padding: 20px;
+    display: block;
+    border: rgb(145, 70, 255) 3px solid;
+    border-radius: 5px;
   }
   
   @media (max-width: 1250px){
@@ -603,3 +615,5 @@ body {
 
   /*#endregion Styleguide*/
   
+
+ 
