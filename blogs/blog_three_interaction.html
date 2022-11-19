@@ -6,39 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="A blog that relfects on the User Interface and Experience design methods used for this website."
+      content="A blog that relfects Interaction and what it means in Data Visualisation."
     />
     <meta name="author" content="Keighty Rose, Kate de Bruyn" />
     <meta name="keywords" content="game design, developer, streamer, blog" />
-    <title>Data-Driven Art Reflection by KeightyRose</title>
+    <title>Interaction Reflection by KeightyRose</title>
     <link rel="stylesheet" href="../src/css/normalise.css" />
     <link rel="stylesheet" href="../src/css/stylesheet_piechart.css" />
-    <script
-      src="https://kit.fontawesome.com/a7ac100429.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://d3js.org/d3.v3.min.js"></script>
   </head>
 
   <body>
     <header>
-      <nav>
+      <nav id="nav-Id">
         <input type="checkbox" id="check" />
         <label for="check" class="menu-bars"
           ><i class="fa-solid fa-bars"></i
         ></label>
         <label for="logo" id="logo">keightyrose</label>
-        <ul>
-          <li><a id="nav-button" href="index.html">Home</a></li>
-          <li><a id="nav-button-blog" href="blog.html">Blog</a></li>
-          <li>
-            <a id="nav-button" href="datavisualisation.html">Data V</a>
-          </li>
-          <li><a id="nav-button" href="dataart.html">Data Art</a></li>
-          <li>
-            <a id="nav-button" href="styleguide.html">Style Guide</a>
-          </li>
-        </ul>
       </nav>
     </header>
 
@@ -115,195 +99,34 @@
         </p>
       </article>
     </main>
+
+    <!-----------------------------------------------PIE CHART---------------------------------------------------->
     <section>
       <div id="button-container">
         <button class="randomize">Definitions</button>
       </div>
-      <!--D3 Interactive Graph-->
-      <script>
-        var svg = d3.select("body").append("svg").append("g");
-
-        svg.append("g").attr("class", "slices");
-        svg.append("g").attr("class", "labels");
-        svg.append("g").attr("class", "lines");
-
-        var width = 960,
-          height = 450,
-          radius = Math.min(width, height) / 2;
-
-        var pie = d3.layout
-          .pie()
-          .sort(null)
-          .value(function (d) {
-            return d.value;
-          });
-
-        var arc = d3.svg
-          .arc()
-          .outerRadius(radius * 0.8)
-          .innerRadius(radius * 0.4);
-
-        var outerArc = d3.svg
-          .arc()
-          .innerRadius(radius * 0.9)
-          .outerRadius(radius * 0.9);
-
-        svg.attr(
-          "transform",
-          "translate(" + width / 2 + "," + height / 2 + ")"
-        );
-
-        var key = function (d) {
-          return d.data.label;
-        };
-
-        var color = d3.scale
-          .ordinal()
-          .domain([
-            "A causal relationship",
-            "A user and system dialogue",
-            "A mediating entity",
-            "Action with start, end, response",
-            "Human intent",
-            "Amplifies cognition",
-            "Cycle of communication acts",
-            "Transmission of information",
-          ])
-          .range([
-            "#a05d56",
-            "#98abc5",
-            "#8a89a6",
-            "#7b6888",
-            "#6b486b",
-            "#a05d56",
-            "#d0743c",
-            "#ff8c00",
-          ]);
-
-        function randomData() {
-          var labels = color.domain();
-          return labels.map(function (label) {
-            return { label: label, value: Math.random() };
-          });
-        }
-
-        change(randomData());
-
-        d3.select(".randomize").on("click", function () {
-          change(randomData());
-        });
-
-        function change(data) {
-          /* ------- PIE SLICES -------*/
-          var slice = svg
-            .select(".slices")
-            .selectAll("path.slice")
-            .data(pie(data), key);
-
-          slice
-            .enter()
-            .insert("path")
-            .style("fill", function (d) {
-              return color(d.data.label);
-            })
-            .attr("class", "slice");
-
-          slice
-            .transition()
-            .duration(1000)
-            .attrTween("d", function (d) {
-              this._current = this._current || d;
-              var interpolate = d3.interpolate(this._current, d);
-              this._current = interpolate(0);
-              return function (t) {
-                return arc(interpolate(t));
-              };
-            });
-
-          slice.exit().remove();
-
-          /* ------- TEXT LABELS -------*/
-
-          var text = svg
-            .select(".labels")
-            .selectAll("text")
-            .data(pie(data), key);
-
-          text
-            .enter()
-            .append("text")
-            .attr("dy", ".35em")
-            .text(function (d) {
-              return d.data.label;
-            });
-
-          function midAngle(d) {
-            return d.startAngle + (d.endAngle - d.startAngle) / 2;
-          }
-
-          text
-            .transition()
-            .duration(1000)
-            .attrTween("transform", function (d) {
-              this._current = this._current || d;
-              var interpolate = d3.interpolate(this._current, d);
-              this._current = interpolate(0);
-              return function (t) {
-                var d2 = interpolate(t);
-                var pos = outerArc.centroid(d2);
-                pos[0] = radius * (midAngle(d2) < Math.PI ? 1 : -1);
-                return "translate(" + pos + ")";
-              };
-            })
-            .styleTween("text-anchor", function (d) {
-              this._current = this._current || d;
-              var interpolate = d3.interpolate(this._current, d);
-              this._current = interpolate(0);
-              return function (t) {
-                var d2 = interpolate(t);
-                return midAngle(d2) < Math.PI ? "start" : "end";
-              };
-            });
-
-          text.exit().remove();
-
-          /* ------- SLICE TO TEXT POLYLINES -------*/
-
-          var polyline = svg
-            .select(".lines")
-            .selectAll("polyline")
-            .data(pie(data), key);
-
-          polyline.enter().append("polyline");
-
-          polyline
-            .transition()
-            .duration(1000)
-            .attrTween("points", function (d) {
-              this._current = this._current || d;
-              var interpolate = d3.interpolate(this._current, d);
-              this._current = interpolate(0);
-              return function (t) {
-                var d2 = interpolate(t);
-                var pos = outerArc.centroid(d2);
-                pos[0] = radius * 0.95 * (midAngle(d2) < Math.PI ? 1 : -1);
-                return [arc.centroid(d2), outerArc.centroid(d2), pos];
-              };
-            });
-
-          polyline.exit().remove();
-        }
-      </script>
+      <div id="pie-chart"></div>
     </section>
+
+    <!-----------------------------------------------BIBLIOGRAPHY---------------------------------------------------->
+
+    <footer>
+      <h3 class="heading-three-alt">
+        HTML and CSS based on keightyrose's previous project. Available at:
+        <a
+          class="continue"
+          href="https://github.com/KateDeBruyn/KateDeBruyn.github.io"
+          >https://github.com/KateDeBruyn/KateDeBruyn.github.io</a
+        >
+      </h3>
+    </footer>
+
+    <script
+      src="https://kit.fontawesome.com/a7ac100429.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="../src/js/navigation.js"></script>
+    <script src="../src/js/interactivePieChart.js"></script>
   </body>
-  <footer>
-    <h3 class="heading-three-alt">
-      HTML and CSS based on keightyrose's previous project. Available at:
-      <a
-        class="continue"
-        href="https://github.com/KateDeBruyn/KateDeBruyn.github.io"
-        >https://github.com/KateDeBruyn/KateDeBruyn.github.io</a
-      >
-    </h3>
-  </footer>
 </html>

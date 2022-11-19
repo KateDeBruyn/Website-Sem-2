@@ -4,38 +4,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatiable" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Description goes here" />
+    <meta
+      name="description"
+      content="Keighty Rose's Data Art artwork and reflection."
+    />
     <meta name="author" content="Keighty Rose, Kate de Bruyn" />
     <meta name="keywords" content="game design, developer, streamer, blog" />
     <title>Data Art by KeightyRose</title>
-    <link rel="stylesheet" href="normalise.css" />
-    <link rel="stylesheet" href="stylesheet.css" />
-    <link rel="stylesheet" href="blogs_stylesheet.css" />
-    <script
-      src="https://kit.fontawesome.com/a7ac100429.js"
-      crossorigin="anonymous"
-    ></script>
+    <link rel="normalise" href="../src/css/normalise.css" />
+    <link rel="stylesheet" href="../src/css/stylesheet.css" />
   </head>
 
   <body>
     <header>
-      <nav>
+      <nav id="nav-Id">
         <input type="checkbox" id="check" />
         <label for="check" class="menu-bars"
           ><i class="fa-solid fa-bars"></i
         ></label>
         <label for="logo" id="logo">keightyrose</label>
-        <ul>
-          <li><a id="nav-button" href="index.html">Home</a></li>
-          <li><a id="nav-button" href="blog.html">Blog</a></li>
-          <li>
-            <a id="nav-button" href="datavisualisation.html">Data V</a>
-          </li>
-          <li><a id="nav-button-data" href="dataart.html">Data Art</a></li>
-          <li>
-            <a id="nav-button" href="styleguide.html">Style Guide</a>
-          </li>
-        </ul>
       </nav>
     </header>
     <main>
@@ -45,7 +32,7 @@
           <h2 class="heading-two">The Keyboard Graph</h2>
           <img
             id="img-art"
-            src="images/Data Art A.png"
+            src="../src/images/Data Art A.png"
             alt="Data-Driven Artwork"
           />
           <p class="blog-paragraph">
@@ -61,26 +48,33 @@
             <br />
             The Keyboard Graph's data is based off of the data used in
             visualisations found
-            <a class="hyperlink" href="datavisualisation.html">here</a>. An API
-            used to track listings of game's deal ratings, Steam ratings, and
-            prices was used for this site's data. More information on the making
-            of this artwork can found in the blog,
-            <a class="hyperlink" href="blog_four_art.html"
+            <a class="hyperlink" href="../data/datavisualisation.html">here</a>.
+            An API used to track listings of game's deal ratings, Steam ratings,
+            and prices was used for this site's data. More information on the
+            making of this artwork can found in the blog,
+            <a class="hyperlink" href="../blogs/blog_four_art.html"
               >Data-Driven Art Reflection</a
             >.
           </p>
         </div>
       </section>
     </main>
+
+    <footer>
+      <h3 class="heading-three-alt">
+        HTML and CSS based on keightyrose's previous project. Available at:
+        <a
+          class="continue"
+          href="https://github.com/KateDeBruyn/KateDeBruyn.github.io"
+          >https://github.com/KateDeBruyn/KateDeBruyn.github.io</a
+        >
+      </h3>
+    </footer>
+
+    <script
+      src="https://kit.fontawesome.com/a7ac100429.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../src/js/navigation.js"></script>
   </body>
-  <footer>
-    <h3 class="heading-three-alt">
-      HTML and CSS based on keightyrose's previous project. Available at:
-      <a
-        class="continue"
-        href="https://github.com/KateDeBruyn/KateDeBruyn.github.io"
-        >https://github.com/KateDeBruyn/KateDeBruyn.github.io</a
-      >
-    </h3>
-  </footer>
 </html>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="A website created to represent data visualisation and its art form. Accompanied by blogs and style guides."
+      content="A website created to represent data visualisation and its art form. Accompanied by blogs, data visualisation and art, and design."
     />
     <meta name="author" content="Keighty Rose, Kate de Bruyn" />
     <meta
@@ -16,32 +16,16 @@
     <title>Keightyrose's Home For Data Visualisation Website</title>
     <link rel="normalise" href="src/css/normalise.css" />
     <link rel="stylesheet" href="src/css/stylesheet.css" />
-    <script
-      src="https://kit.fontawesome.com/a7ac100429.js"
-      crossorigin="anonymous"
-    ></script>
-    <!--<script type="text/javascript" src="javascript.js"></script>-->
   </head>
 
   <body>
     <header>
-      <nav>
+      <nav id="nav-Id">
         <input type="checkbox" id="check" />
         <label for="check" class="menu-bars"
           ><i class="fa-solid fa-bars"></i
         ></label>
         <label for="logo" id="logo">keightyrose</label>
-        <ul>
-          <li><a id="nav-button-index" href="index.html">Home</a></li>
-          <li><a id="nav-button" href="blog.html">Blog</a></li>
-          <li>
-            <a id="nav-button" href="datavisualisation.html">Data V</a>
-          </li>
-          <li><a id="nav-button" href="dataart.html">Data Art</a></li>
-          <li>
-            <a id="nav-button" href="styleguide.html">Style Guide</a>
-          </li>
-        </ul>
       </nav>
     </header>
     <main>
@@ -65,7 +49,7 @@
           <div class="index-item">
             <figure class="figure-responsive">
               <img
-                src="images/pexels-tiger-lily-7109274.jpg"
+                src="../src/images/pexels-tiger-lily-7109274.jpg"
                 alt="Data Visualisation"
                 class="img-responsive"
               />
@@ -103,9 +87,11 @@
             site. <br /><br />
             The aesthetic stategies used across the site have been formulated by
             the
-            <a class="hyperlink" href="styleguide.html">UX and UX design</a>
+            <a class="hyperlink" href="design/styleguide.html"
+              >UX and UX design</a
+            >
             and the necessary
-            <a class="hyperlink" href="blog_two_UI.html">research</a>.
+            <a class="hyperlink" href="blogs/blog_two_UI.html">research</a>.
             Representation throughout the site involves the visualisation of
             data - the science and practice of visually representing data as
             consumable, understandable information This website makes use of
@@ -119,16 +105,23 @@
         </article>
       </section>
     </main>
-    <script src="javascript.js"></script>
+
+    <footer>
+      <h3 class="heading-three-alt">
+        HTML and CSS based on keightyrose's previous project. Available at:
+        <a
+          class="continue"
+          href="https://github.com/KateDeBruyn/KateDeBruyn.github.io"
+          >https://github.com/KateDeBruyn/KateDeBruyn.github.io</a
+        >
+      </h3>
+    </footer>
+
+    <script
+      src="https://kit.fontawesome.com/a7ac100429.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../src/js/navigation.js"></script>
+    <script src="../src/js/javascript.js"></script>
   </body>
-  <footer>
-    <h3 class="heading-three-alt">
-      HTML and CSS based on keightyrose's previous project. Available at:
-      <a
-        class="continue"
-        href="https://github.com/KateDeBruyn/KateDeBruyn.github.io"
-        >https://github.com/KateDeBruyn/KateDeBruyn.github.io</a
-      >
-    </h3>
-  </footer>
 </html>

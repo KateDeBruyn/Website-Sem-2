@@ -4,49 +4,27 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatiable" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Description goes here" />
+    <meta
+      name="description"
+      content="A blog about Data Visualisation and its relationship to digital information."
+    />
     <meta name="author" content="Keighty Rose, Kate de Bruyn" />
     <meta name="keywords" content="game design, developer, streamer, blog" />
     <title>Data Visualisation by KeightyRose</title>
-    <link rel="stylesheet" href="normalise.css" />
-    <link rel="stylesheet" href="stylesheet.css" />
-    <link rel="stylesheet" href="blogs_stylesheet.css" />
-    <script
-      src="https://kit.fontawesome.com/a7ac100429.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="../src/js/javascript.js"></script>
+    <link rel="normalise" href="../src/css/normalise.css" />
+    <link rel="stylesheet" href="../src/css/stylesheet.css" />
   </head>
 
   <body>
     <header>
-      <nav>
+      <nav id="nav-Id">
         <input type="checkbox" id="check" />
         <label for="check" class="menu-bars"
           ><i class="fa-solid fa-bars"></i
         ></label>
         <label for="logo" id="logo">keightyrose</label>
-        <ul>
-          <li><a id="nav-button" href="index.html">Home</a></li>
-          <li><a id="nav-button-blog" href="blog.html">Blog</a></li>
-          <li>
-            <a id="nav-button" href="datavisualisation.html">Data V</a>
-          </li>
-          <li><a id="nav-button" href="dataart.html">Data Art</a></li>
-          <li>
-            <a id="nav-button" href="styleguide.html">Style Guide</a>
-          </li>
-        </ul>
       </nav>
     </header>
-
-    <div class="dropdown">
-      <button id="dropdown-button">Blogs</button>
-      <div class="dropdown-menu">
-        <a id="nav-button" href="blog.html">Data</a>
-        <a id="nav-button" href="blog.html">UI/UX</a>
-      </div>
-    </div>
 
     <main>
       <section>
@@ -179,6 +157,7 @@
         </div>
       </section>
 
+      <!-----------------------------------------------BIBLIOGRAPHY---------------------------------------------------->
       <section>
         <h2 class="heading-two">Bibliography</h2>
         <p class="blog-paragraph">
@@ -212,16 +191,23 @@
         </div>
       </section>
     </main>
-  </body>
 
-  <footer>
-    <h3 class="heading-three-alt">
-      HTML and CSS based on keightyrose's previous project. Available at:
-      <a
-        class="continue"
-        href="https://github.com/KateDeBruyn/KateDeBruyn.github.io"
-        >https://github.com/KateDeBruyn/KateDeBruyn.github.io</a
-      >
-    </h3>
-  </footer>
+    <footer>
+      <h3 class="heading-three-alt">
+        HTML and CSS based on keightyrose's previous project. Available at:
+        <a
+          class="continue"
+          href="https://github.com/KateDeBruyn/KateDeBruyn.github.io"
+          >https://github.com/KateDeBruyn/KateDeBruyn.github.io</a
+        >
+      </h3>
+    </footer>
+
+    <script
+      src="https://kit.fontawesome.com/a7ac100429.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../src/js/navigation.js"></script>
+    <script src="../src/js/javascript.js"></script>
+  </body>
 </html>

@@ -11,34 +11,18 @@
     <meta name="author" content="Keighty Rose, Kate de Bruyn" />
     <meta name="keywords" content="game design, developer, streamer, blog" />
     <title>UI and UX Reflection by KeightyRose</title>
-    <link rel="stylesheet" href="normalise.css" />
-    <link rel="stylesheet" href="stylesheet.css" />
-    <link rel="stylesheet" href="blogs_stylesheet.css" />
-    <script
-      src="https://kit.fontawesome.com/a7ac100429.js"
-      crossorigin="anonymous"
-    ></script>
+    <link rel="normalise" href="../src/css/normalise.css" />
+    <link rel="stylesheet" href="../src/css/stylesheet.css" />
   </head>
 
   <body>
     <header>
-      <nav>
+      <nav id="nav-Id">
         <input type="checkbox" id="check" />
         <label for="check" class="menu-bars"
           ><i class="fa-solid fa-bars"></i
         ></label>
         <label for="logo" id="logo">keightyrose</label>
-        <ul>
-          <li><a id="nav-button" href="index.html">Home</a></li>
-          <li><a id="nav-button-blog" href="blog.html">Blog</a></li>
-          <li>
-            <a id="nav-button" href="datavisualisation.html">Data V</a>
-          </li>
-          <li><a id="nav-button" href="dataart.html">Data Art</a></li>
-          <li>
-            <a id="nav-button" href="styleguide.html">Style Guide</a>
-          </li>
-        </ul>
       </nav>
     </header>
 
@@ -87,7 +71,7 @@
           <figure class="figure-responsive">
             <img
               class="img-responsive"
-              src="images/Index page_01.png"
+              src="../src/images/Index page_01.png"
               alt="New wireframes and colour"
             />
           </figure>
@@ -118,7 +102,7 @@
           <figure class="figure-responsive">
             <img
               class="img-responsive"
-              src="images/Wireframe_Main_Blog.jpg"
+              src="../src/images/Wireframe_Main_Blog.jpg"
               alt="New wireframes and colour"
             />
           </figure>
@@ -141,7 +125,7 @@
           <figure class="figure-responsive">
             <img
               class="img-responsive"
-              src="images/Wireframe_Index.jpg"
+              src="../src/images/Wireframe_Index.jpg"
               alt="New wireframes and colour"
             />
           </figure>
@@ -157,7 +141,7 @@
           <figure class="figure-responsive">
             <img
               class="img-responsive"
-              src="images/Hamburger.png"
+              src="../src/images/Hamburger.png"
               alt="New wireframes and colour"
             />
           </figure>
@@ -192,6 +176,7 @@
         </div>
       </section>
 
+      <!-----------------------------------------------BIBLIOGRAPHY---------------------------------------------------->
       <section>
         <h2 class="heading-two">Bibliography</h2>
         <p class="blog-paragraph">
@@ -220,16 +205,23 @@
         </div>
       </section>
     </main>
-    <script src="javascript.js"></script>
+
+    <footer>
+      <h3 class="heading-three-alt">
+        HTML and CSS based on keightyrose's previous project. Available at:
+        <a
+          class="continue"
+          href="https://github.com/KateDeBruyn/KateDeBruyn.github.io"
+          >https://github.com/KateDeBruyn/KateDeBruyn.github.io</a
+        >
+      </h3>
+    </footer>
+
+    <script
+      src="https://kit.fontawesome.com/a7ac100429.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../src/js/navigation.js"></script>
+    <script src="../src/js/javascript.js"></script>
   </body>
-  <footer>
-    <h3 class="heading-three-alt">
-      HTML and CSS based on keightyrose's previous project. Available at:
-      <a
-        class="continue"
-        href="https://github.com/KateDeBruyn/KateDeBruyn.github.io"
-        >https://github.com/KateDeBruyn/KateDeBruyn.github.io</a
-      >
-    </h3>
-  </footer>
 </html>

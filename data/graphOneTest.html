@@ -8,41 +8,29 @@
     <meta name="author" content="Keighty Rose, Kate de Bruyn" />
     <meta name="keywords" content="game design, developer, streamer, blog" />
     <title>Visualisations by KeightyRose</title>
-    <link rel="stylesheet" href="normalise.css" />
-    <link rel="stylesheet" href="stylesheet.css" />
-    <script
-      src="https://kit.fontawesome.com/a7ac100429.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="javascript.js"></script>
+    <link rel="normalise" href="../src/css/normalise.css" />
+    <link rel="stylesheet" href="../src/css/stylesheet.css" />
   </head>
 
   <body>
     <header>
-      <nav>
+      <nav id="nav-Id">
         <input type="checkbox" id="check" />
         <label for="check" class="menu-bars"
           ><i class="fa-solid fa-bars"></i
         ></label>
         <label for="logo" id="logo">keightyrose</label>
-        <ul>
-          <li><a id="nav-button" href="index.html">Home</a></li>
-          <li><a id="nav-button" href="blog.html">Blog</a></li>
-          <li>
-            <a id="nav-button-data" href="datavisualisation.html">Data V</a>
-          </li>
-          <li><a id="nav-button" href="dataart.html">Data Art</a></li>
-          <li>
-            <a id="nav-button" href="styleguide.html">Style Guide</a>
-          </li>
-        </ul>
       </nav>
     </header>
     <main>
+      <h1 class="heading-one">Data Visualisation and Digital Information</h1>
+
+      <!-----------------------------------------GRAPH ONE SECTION----------------------------------------------->
+
+      <h2 class="heading-two">GRAPH ONE</h2>
       <p id="loading">Loading...</p>
       <div class="datav-container">
-        <div class="index-item" id="graphOneDiff">
+        <div class="data-v-item" id="graphToLoad">
           <svg
             id="vizG1"
             width="600"
@@ -50,13 +38,60 @@
             transform="translate(10, 10)"
           ></svg>
         </div>
-        <div class="index-item">
+        <article class="data-v-item">
           A static graph showing how many days out of a month that Twitch
           streamers were live.
+        </article>
+      </div>
+
+      <!-----------------------------------------GRAPH TWO SECTION----------------------------------------------->
+
+      <h2 class="heading-two">GRAPH TWO</h2>
+      <div class="datav-container">
+        <article class="data-v-item">
+          The following graph shows the price comparisons between the sale and
+          original prices of the games.
+        </article>
+        <div class="data-v-item" id="graphToLoad">
+          <!--<div id="graphTwo"></div>-->
+          <svg
+            id="graphTwo"
+            width="600"
+            height="450"
+            transform="translate(10, 10)"
+          ></svg>
+        </div>
+      </div>
+
+      <!-----------------------------------------GRAPH THREE SECTION----------------------------------------------->
+
+      <h2 class="heading-two">GRAPH THREE</h2>
+      <div class="datav-container">
+        <article class="data-v-item">
+          The following graph shows the price comparisons between the sale and
+          original prices of the games.
+        </article>
+        <div class="data-v-item" id="graphToLoad">
+          <button id="buttonOne">Steaming Rating</button>
+          <button onclick="update(data1)">Steam Rating</button>
+          <button onclick="update(data2)">Savings</button>
+          <svg
+            id="graphThree"
+            width="600"
+            height="450"
+            transform="translate(10, 10)"
+          ></svg>
         </div>
       </div>
     </main>
 
-    <script src="graphOne.js"></script>
+    <script
+      src="https://kit.fontawesome.com/a7ac100429.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="../src/js/graphOne.js"></script>
+    <script src="../src/js/graphTwo.js"></script>
+    <script src="../src/js/graphThree.js"></script>
   </body>
 </html>

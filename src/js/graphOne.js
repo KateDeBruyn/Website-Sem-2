@@ -1,5 +1,5 @@
 const loadingElement = document.getElementById("loading");
-const graphOneElement = document.getElementById("graphOneDiff");
+const graphOneElement = document.getElementById("graphToLoad");
 
 graphOneElement.style.display = "none";
 
