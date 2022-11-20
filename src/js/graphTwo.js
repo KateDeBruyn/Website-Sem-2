@@ -18,7 +18,7 @@ var svgTwo = d3
 
 // Parse the Data
 //var csvSource = 
-d3.csv((href = "../src/csv/jsontocsvTwo.csv"), function (data) {
+d3.csv((href = "../csv/jsontocsvTwo.csv"), function (data) {
 // List of subgroups = header of the csv files = soil condition here
 var subgroups = data.columns.slice(1);
 

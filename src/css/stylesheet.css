@@ -444,16 +444,11 @@ body {
   .datav-container{
     max-width: auto;
     max-height: auto;
-    margin: 100px 220px;
-    padding: 20px;
+    margin: 0px 220px 50px;
+    padding: 0px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
     column-gap: 15px;
-    row-gap: 20px;
-  
-    animation: backInLeft;
-    animation-duration: 1s;
   }
 
   .data-v-item{
@@ -466,6 +461,39 @@ body {
     display: block;
     border: rgb(145, 70, 255) 3px solid;
     border-radius: 5px;
+  }
+
+  .graph-heading-one{
+    color: rgb(169, 112, 255);
+    font-size: 35px;
+    margin: 90px 200px 20px;
+    padding: 20px;
+  }
+  
+  .graph-heading-two{
+    color: rgb(169, 112, 255);
+    font-size: 25px;
+    margin: 20px 215px 0px;
+    padding: 5px;
+  }
+
+  #loading{
+    color: rgb(169, 112, 255);
+    font-size: 25px;
+    margin: 20px 215px 0px;
+    padding: 5px;
+  }
+
+  #graph-button{
+    width: 150px;
+    margin: 0 40% 10px;
+    padding: 15px;
+    background: rgb(169, 112, 255);
+    color: white;
+    border: 0;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
   }
   
   @media (max-width: 1250px){
