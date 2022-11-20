@@ -1,5 +1,3 @@
-
-// set the dimensions and margins of the graph
 var marginTwo = { top: 10, right: 30, bottom: 20, left: 50 },
 widthTwo = 460 - marginTwo.left - marginTwo.right,
 heightTwo = 400 - marginTwo.top - marginTwo.bottom;
@@ -17,7 +15,6 @@ var svgTwo = d3
 );
 
 // Parse the Data
-//var csvSource = 
 d3.csv((href = "../csv/jsontocsvTwo.csv"), function (data) {
 // List of subgroups = header of the csv files = soil condition here
 var subgroups = data.columns.slice(1);

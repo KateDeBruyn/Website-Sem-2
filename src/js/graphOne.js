@@ -1,7 +1,7 @@
 const loadingElement = document.getElementById("loading");
-const graphOneElement = document.getElementById("graphToLoad");
+const graphOneElementTwo = document.getElementById("graphToLoad");
 
-graphOneElement.style.display = "none";
+graphOneElementTwo.style.display = "none";
 
 const api_url =
 "https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=15&steamAppID=";
@@ -100,7 +100,7 @@ async function getDataG1() {
       vizAreaG1.node();
 
       loadingElement.style.display = "none";
-      graphOneElement.style.display = "block";
+      graphOneElementTwo.style.display = "block";
 
   }
 

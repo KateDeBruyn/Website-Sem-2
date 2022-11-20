@@ -348,7 +348,7 @@ body {
 
   .blog-container {
     max-width: 960px;
-    margin: 100px auto;
+    margin: 30px auto;
     padding: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -388,6 +388,18 @@ body {
   
   .blog-figure{
     margin: 0px 30% 10px;
+  }
+
+  .blog-link-text{
+    color: rgb(253, 249, 223);
+    text-decoration: none;
+  }
+
+  #blog-heading-one{
+    color: rgb(169, 112, 255);
+    font-size: 35px;
+    margin: 90px 260px 0px;
+    padding: 20px;
   }
   
   @media (max-width: 800px){
@@ -512,14 +524,20 @@ body {
 
   /*#region Index*/
   
+ #index-heading-one{
+  color: rgb(169, 112, 255);
+    font-size: 35px;
+    margin: 110px 290px 0px;
+    padding: 20px;
+ }
+  
 .index-container{
   max-width: 960px;
-  margin: 40px auto;
+  margin: 0px auto;
   padding: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: 20px;
-  row-gap: 20px;
+  column-gap: 10px;
 
   /*
     max-width: auto;

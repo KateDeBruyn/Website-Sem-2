@@ -1,18 +1,18 @@
 
     // Steam Rating
     var data1 = [
-    { title: "Bayonetta", value: 92 },
-    { title: "Mortal Kombat XL", value: 85 },
-    { title: "Fallout 3", value: 78 },
-    { title: "Breath of Ghosts", value: 52 },
+    { title: "Fotonica", value: 89 },
+    { title: "Semblance", value: 88 },
+    { title: "Tekken 7", value: 81 },
+    { title: "Gomo", value: 76 },
     ];
 
     // Savings
     var data2 = [
-    { title: "Bayonetta", value: 75 },
-    { title: "Mortal Kombat XL", value: 80 },
-    { title: "Fallout 3", value: 75 },
-    { title: "Breath of Ghosts", value: 90 },
+    { title: "Fotonica", value: 87 },
+    { title: "Semblance", value: 90 },
+    { title: "Tekken 7", value: 85 },
+    { title: "Gomo", value: 90 },
     ];
 
     // set the dimensions and margins of the graph

@@ -1,5 +1,5 @@
 // D3 Interactive Pie Chart
-var svg = d3.select("pie-chart").append("svg").append("g");
+var svg = d3.select("#pie-chart").append("svg").append("g");
 
 svg.append("g").attr("class", "slices");
 svg.append("g").attr("class", "labels");
