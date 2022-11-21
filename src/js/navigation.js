@@ -9,7 +9,7 @@ const navData = [
 
 //dev nav
 // const navData = [
-//     { title: "Home", link: "../index.html"},
+//     { title: "Home", link: "../../index.html"},
 //     { title: "Blog", link: "../blogs/blog.html"},
 //     { title: "Data Visualisation", link: "../data/datavisualisation.html"},
 //     { title: "Data Art", link: "../data/dataart.html"},
