@@ -331,7 +331,6 @@ body {
   }
   /*#endregion To Top Button*/
   
-
   /*#region Blogs*/
 
   .blog-container {
@@ -508,6 +507,15 @@ body {
     }
   }
 
+  @media (max-width: 950px){
+    .graph-heading-two{
+      color: rgb(169, 112, 255);
+      font-size: 25px;
+      margin: 0px 215px 0px;
+      padding: 5px;
+    }
+  }
+
   /*#endregion Data Visualisation*/
 
   /*#region Index*/
@@ -557,24 +565,31 @@ body {
 @media (max-width: 1250px){
   .index-container{
     max-width: auto;
-    margin: 80px auto;
+    margin: 20px auto;
     padding: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    row-gap: 20px;
+    row-gap: 5px;
   }
+
+  #index-heading-one{
+    color: rgb(169, 112, 255);
+      font-size: 35px;
+      margin: 110px 90px 0px;
+      padding: 20px;
+   }
 }
 
 @media (max-width: 1000px){
   .index-container{
     max-width: auto;
-    margin: 80px auto;
+    margin: 0px auto;
     padding: 30px;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
-    row-gap: 20px;
+    row-gap: 5px;
   }
 }
 

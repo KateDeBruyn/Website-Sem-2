@@ -10,7 +10,7 @@ var gameDataTwo = [];
 function CreateGraphTwoData(gameData){
     return({
         name: gameData.internalName,
-        steamRatingPercent: parseFloat(gameData.steamRatingPercent),
+        metacriticScore: parseFloat(gameData.metacriticScore),
     });
 }
 
@@ -68,11 +68,11 @@ async function getDataG2() {
         .append("g")
         .attr("fill", "rgb(169, 112, 255)")
         .selectAll("rect")
-        .data(gameDataTwo.sort((a, b) => d3.descending(a.steamRatingPercent, b.steamRatingPercent)))
+        .data(gameDataTwo.sort((a, b) => d3.descending(a.metacriticScore, b.metacriticScore)))
         .join("rect")
         .attr("x", (d, i) => xScaleG2(i))
-        .attr("y", (d) => yScaleG2(d.steamRatingPercent))
-        .attr("height", (d) => yScaleG2(0) - yScaleG2(d.steamRatingPercent))
+        .attr("y", (d) => yScaleG2(d.metacriticScore))
+        .attr("height", (d) => yScaleG2(0) - yScaleG2(d.metacriticScore))
         .attr("width", xScaleG2.bandwidth());
 
       function xAxisG2(g) {
