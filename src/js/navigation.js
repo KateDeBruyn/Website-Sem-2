@@ -1,20 +1,20 @@
 //production nav
-// const navData = [
-//     { title: "Home", link: "https://katedebruyn.github.io/Website-Sem-2/index.html"},
-//     { title: "Blog", link: "https://katedebruyn.github.io/Website-Sem-2/blogs/blog.html"},
-//     { title: "Data Visualisation", link: "https://katedebruyn.github.io/Website-Sem-2/data/datavisualisation.html"},
-//     { title: "Data Art", link: "https://katedebruyn.github.io/Website-Sem-2/data/dataart.html"},
-//     { title: "Design", link: "https://katedebruyn.github.io/Website-Sem-2/design/styleguide.html"},
-// ]
+const navData = [
+    { title: "Home", link: "https://katedebruyn.github.io/Website-Sem-2/index.html"},
+    { title: "Blog", link: "https://katedebruyn.github.io/Website-Sem-2/blogs/blog.html"},
+    { title: "Data Visualisation", link: "https://katedebruyn.github.io/Website-Sem-2/data/datavisualisation.html"},
+    { title: "Data Art", link: "https://katedebruyn.github.io/Website-Sem-2/data/dataart.html"},
+    { title: "Design", link: "https://katedebruyn.github.io/Website-Sem-2/design/styleguide.html"},
+]
 
 //dev nav
-const navData = [
-    { title: "Home", link: "../index.html"},
-    { title: "Blog", link: "../blogs/blog.html"},
-    { title: "Data Visualisation", link: "../data/datavisualisation.html"},
-    { title: "Data Art", link: "../data/dataart.html"},
-    { title: "Design", link: "../design/styleguide.html"},
-]
+// const navData = [
+//     { title: "Home", link: "../index.html"},
+//     { title: "Blog", link: "../blogs/blog.html"},
+//     { title: "Data Visualisation", link: "../data/datavisualisation.html"},
+//     { title: "Data Art", link: "../data/dataart.html"},
+//     { title: "Design", link: "../design/styleguide.html"},
+// ]
 
 const navElement = document.getElementById("nav-Id");
 
