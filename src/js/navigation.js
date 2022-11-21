@@ -1,6 +1,6 @@
 //production nav
 const navData = [
-    { title: "Home", link: "https://katedebruyn.github.io/Website-Sem-2/"},
+    { title: "Home", link: "https://katedebruyn.github.io/Website-Sem-2/index.html"},
     { title: "Blog", link: "https://katedebruyn.github.io/Website-Sem-2/blogs/blog.html"},
     { title: "Data Visualisation", link: "https://katedebruyn.github.io/Website-Sem-2/data/datavisualisation.html"},
     { title: "Data Art", link: "https://katedebruyn.github.io/Website-Sem-2/data/dataart.html"},
